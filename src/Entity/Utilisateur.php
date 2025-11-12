@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -30,6 +32,27 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\Column]
+    private ?int $argentPossede = null;
+
+    /**
+     * @var Collection<int, Accessoire>
+     */
+    #[ORM\ManyToMany(targetEntity: Accessoire::class, inversedBy: 'utilisateursQuiPossedent')]
+    private Collection $possession;
+
+    /**
+     * @var Collection<int, Accessoire>
+     */
+    #[ORM\ManyToMany(targetEntity: Accessoire::class)]
+    private Collection $tenuePortee;
+
+    public function __construct()
+    {
+        $this->possession = new ArrayCollection();
+        $this->tenuePortee = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -110,5 +133,65 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function eraseCredentials(): void
     {
         // @deprecated, to be removed when upgrading to Symfony 8
+    }
+
+    public function getArgentPossede(): ?int
+    {
+        return $this->argentPossede;
+    }
+
+    public function setArgentPossede(int $argentPossede): static
+    {
+        $this->argentPossede = $argentPossede;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Accessoire>
+     */
+    public function getPossession(): Collection
+    {
+        return $this->possession;
+    }
+
+    public function addPossession(Accessoire $possession): static
+    {
+        if (!$this->possession->contains($possession)) {
+            $this->possession->add($possession);
+        }
+
+        return $this;
+    }
+
+    public function removePossession(Accessoire $possession): static
+    {
+        $this->possession->removeElement($possession);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Accessoire>
+     */
+    public function getTenuePortee(): Collection
+    {
+        return $this->tenuePortee;
+    }
+
+    public function addTenuePortee(Accessoire $tenuePortee): static
+    {
+        if (!$this->tenuePortee->contains($tenuePortee)) {
+            $this->tenuePortee->add($tenuePortee);
+        }
+
+        return $this;
+    }
+
+    public function removeTenuePortee(Accessoire $tenuePortee): static
+    {
+        $this->tenuePortee->removeElement($tenuePortee);
+
+        return $this;
     }
 }

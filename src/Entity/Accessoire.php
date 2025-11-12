@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AccessoireRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AccessoireRepository::class)]
@@ -24,6 +26,17 @@ class Accessoire
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $visuelAccessoire = null;
+
+    /**
+     * @var Collection<int, Utilisateur>
+     */
+    #[ORM\ManyToMany(targetEntity: Utilisateur::class, mappedBy: 'possession')]
+    private Collection $utilisateursQuiPossedent;
+
+    public function __construct()
+    {
+        $this->utilisateursQuiPossedent = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -74,6 +87,33 @@ class Accessoire
     public function setVisuelAccessoire(?string $visuelAccessoire): static
     {
         $this->visuelAccessoire = $visuelAccessoire;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Utilisateur>
+     */
+    public function getUtilisateursQuiPossedent(): Collection
+    {
+        return $this->utilisateursQuiPossedent;
+    }
+
+    public function addUtilisateursQuiPossedent(Utilisateur $utilisateursQuiPossedent): static
+    {
+        if (!$this->utilisateursQuiPossedent->contains($utilisateursQuiPossedent)) {
+            $this->utilisateursQuiPossedent->add($utilisateursQuiPossedent);
+            $utilisateursQuiPossedent->addPossession($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUtilisateursQuiPossedent(Utilisateur $utilisateursQuiPossedent): static
+    {
+        if ($this->utilisateursQuiPossedent->removeElement($utilisateursQuiPossedent)) {
+            $utilisateursQuiPossedent->removePossession($this);
+        }
 
         return $this;
     }
