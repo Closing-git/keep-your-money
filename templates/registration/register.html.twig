@@ -4,21 +4,23 @@
 {% endblock %}
 
 {% block body %}
-	<h2>S'enregistrer</h2>
+	<div class="containerConnexion">
+		<h2 class="titreConnexion">S'enregistrer</h2>
 
-	{{ form_errors(registrationForm) }}
+		{{ form_errors(registrationForm) }}
 
-	{{ form_start(registrationForm) }}
-	{{ form_row(registrationForm.username) }}
-	{{ form_row(registrationForm.plainPassword, {
+		{{ form_start(registrationForm) }}
+		{{ form_row(registrationForm.username) }}
+		{{ form_row(registrationForm.plainPassword, {
             label: 'Mot de passe'
         }) }}
 
-	<button type="submit">S'enregistrer</button>
-	{{ form_end(registrationForm) }}
-	<p>Déjà un compte ? -</p>
-	<a href="{{ path('app_login') }}">
-		<p>Se connecter
-		</p>
-	</a>
+		<button class="boutonConnexion" type="submit">S'enregistrer</button>
+		{{ form_end(registrationForm) }}
+		<p class="sousTexteConnexion">Déjà un compte ? -</p>
+		<a href="{{ path('app_login') }}">
+			<p class="sousTexteConnexion">Se connecter
+			</p>
+		</a>
+	</div>
 {% endblock %}

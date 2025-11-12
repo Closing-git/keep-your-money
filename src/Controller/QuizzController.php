@@ -13,6 +13,7 @@ final class QuizzController extends AbstractController
     #[Route('/questionnaire', name: 'app_quizz')]
     public function index(EntityManagerInterface $em): Response
     {
+        //Récupérer l'utilisateur connecté et son argent
         $utilisateur = $this->getUser();
         $utilisateurConnecte = $this->getUser();
         $utilisateur = $em->getRepository(Utilisateur::class)->find($utilisateurConnecte);
@@ -20,6 +21,9 @@ final class QuizzController extends AbstractController
         if (!$utilisateur) {
             return $this->redirectToRoute('app_login');
         }
+
+
+        
         $vars = [
             'utilisateur' => $utilisateur,
             'argentPossede' => $argentPossede,

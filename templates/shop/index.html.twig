@@ -12,13 +12,59 @@
 			Connecté en tant que :
 			{{ utilisateur.username }}
 			<a href="{{ path('app_logout') }}">Déconnexion</a>
+
+			<h3>Haut</h3>
+			{% for accessoireHaut in accessoiresHaut %}
+				{{ accessoireHaut.nomAccessoire }}
+			{% endfor %}
+
+			<h3>Bas</h3>
+			{% for accessoireBas in accessoiresBas %}
+				{{ accessoireBas.nomAccessoire }}
+			{% endfor %}
+
+			<h3>Tête</h3>
+			{% for accessoireTete in accessoiresTete %}
+				{{ accessoireTete.nomAccessoire }}
+			{% endfor %}
+
+			<h3>Animal</h3>
+			{% for accessoireAnimal in accessoiresAnimal %}
+				{{ accessoireAnimal.nomAccessoire }}
+			{% endfor %}
+
+			<h3>Objet Main Droite</h3>
+			{% for accessoireObjetMainDroite in accessoiresObjetMainDroite %}
+				{{ accessoireObjetMainDroite.nomAccessoire }}
+			{% endfor %}
+
+			<h3>Objet Main Gauche</h3>
+			{% for accessoireObjetMainGauche in accessoiresObjetMainGauche %}
+				{{ accessoireObjetMainGauche.nomAccessoire }}
+			{% endfor %}
+
+			<h3>Fonds</h3>
+			{% for accessoireFonds in accessoiresFonds %}
+				{{ accessoireFonds.nomAccessoire }}
+			{% endfor %}
+
+			<h3>Filtres</h3>
+			{% for accessoireFiltres in accessoiresFiltres %}
+				{{ accessoireFiltres.nomAccessoire }}
+			{% endfor %}
 		</div>
 
 		<nav>
 			<ul>
-				<li><a href="{{ path('app_shop') }}">Magasin</a></li>
-				<li><a href="{{ path('app_mon_avatar') }}">Mon avatar</a></li>
-				<li><a href="{{ path('app_quizz') }}">Questionnaire</a></li>
+				<li>
+					<ahref="{{path('app_shop')}}">Magasin</ahref=>
+				</li>
+				<li>
+					<ahref="{{path('app_mon_avatar')}}">Mon avatar</ahref=>
+				</li>
+				<li>
+					<ahref="{{path('app_quizz')}}">Questionnaire</ahref=>
+				</li>
 			</ul>
 		</nav>
 	</div>
