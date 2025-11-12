@@ -1,17 +1,67 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Save it !
+			{% endblock %}
+		</title>
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+		{% block javascripts %}
+			{% block importmap %}
+				{{ importmap('app') }}
+			{% endblock %}
+		{% endblock %}
+	</head>
+	<body>
+    {% if app.user %}
+		<header>
+			<div class="logo-titre">
+				<img src="" alt="Logo du site">
+			</div>
+
+			<nav>
+				<a href="{{ path('app_mon_avatar') }}">MON AVATAR</a>
+				<a href="{{ path('app_quizz') }}">DOIS-JE L'ACHETER ?</a>
+				<a href="{{ path('app_shop') }}">MAGASIN</a>
+			</nav>
+
+			<div class="connection-pseudo-money">
+				<div class="money-pseudo">
+					<p id="porteMonnaie">{{app.user.argentPossede}} 🪙
+					</p>
+					<p id="pseudo">{{ app.user.username }}</p>
+				</div>
+				<i></i>
+				<!--TODO insérer icone connection-->
+				<!--! Afficher le bouton déconnection-->
+			</div>
+		</header>
+
+        {% else %}
+        <header>
+			<div class="logo-titre">
+				<img src="" alt="Logo du site">
+			</div>
+
+		</header>
+    {% endif %}
+
+		{% block body %}{% endblock %}
+
+		<footer>
+			<p class="credits">Ce site a été créé par :<br>
+				Chloé Fersing<br>
+				Lisa Poinambalom<br>
+				Sam Fievez<br>
+				Stephanie Renee Vancauwenberghe<br>
+				Caroline Poveda<br>
+				Charlotte Sadowczyk</p>
+			<div class="iconesReseauxSociaux">
+				<i></i>
+				<i></i>
+				<i></i>
+			</div>
+		</footer>
+	</body>
 </html>
