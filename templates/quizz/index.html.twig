@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dois-je l'acheter ?
+{% endblock %}
+
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
+
+	<div class="example-wrapper">
+		<h1>Quizz</h1>
+		Connecté en tant que :
+		{{ utilisateur.username }}
+		<a href="{{ path('app_logout') }}">Déconnexion</a>
+	</div>
+	<nav>
+		<ul>
+			<li><a href="{{ path('app_shop') }}">Magasin</a></li>
+			<li><a href="{{ path('app_mon_avatar') }}">Mon avatar</a></li>
+			<li><a href="{{ path('app_quizz') }}">Questionnaire</a></li>
+		</ul>
+	</nav>
+{% endblock %}
