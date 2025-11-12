@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon avatar
+{% block title %}Dois-je l'acheter ?
 {% endblock %}
 
 {% block body %}
@@ -18,7 +18,7 @@
 	</style>
 
 	<div class="example-wrapper">
-		<h1>mon avatar</h1>
+		<h1>Quizz</h1>
 		Connecté en tant que :
 		{{ utilisateur.username }}
 		<a href="{{ path('app_logout') }}">Déconnexion</a>
@@ -27,7 +27,7 @@
 		<ul>
 			<li><a href="{{ path('app_shop') }}">Magasin</a></li>
 			<li><a href="{{ path('app_mon_avatar') }}">Mon avatar</a></li>
-            <li><a href="{{ path('app_quizz') }}">Questionnaire</a></li>
+			<li><a href="{{ path('app_quizz') }}">Questionnaire</a></li>
 		</ul>
 	</nav>
 {% endblock %}
