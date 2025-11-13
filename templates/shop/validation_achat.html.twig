@@ -13,13 +13,13 @@
 		<div class="confirmation confShow">
 			<h1>CONFIRMER L'ACHAT</h1>
 			<div class="image-nomItem-prix-Fond">
-				<img id="imgConfirm" src="" alt="blabla">
 				<div class="nomItem-prix">
 					<p>{{ accessoire.nomAccessoire }}</p>
 					<p id="prixItemSelect">
 						{{ accessoire.prixAccessoire }}
 						🪙</p>
 				</div>
+				<img id="imgConfirm" src="{{ asset('images/' ~ accessoire.visuelAccessoire) }}" alt="blabla">
 			</div>
 
 			<div class="boutons">
