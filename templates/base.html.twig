@@ -14,10 +14,8 @@
 		<!--Fonts :-->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-		{% block styles %}
-		{% endblock %}
-		
+		<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> {% block styles %}{% endblock %}
+
 		<title>
 			{% block title %}Save it !
 			{% endblock %}
@@ -56,7 +54,9 @@
 						<i class="fa-solid fa-user"></i>
 					</button>
 
-					<button class="btnLogout hide show" id="btnLogout">Déconnexion</button>
+					<a href="{{ path('app_logout') }}">
+						<button class="btnLogout hide show" id="btnLogout">Déconnexion</button>
+					</a>
 				</div>
 			</header>
 
