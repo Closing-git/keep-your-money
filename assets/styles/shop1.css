@@ -1,18 +1,37 @@
-
 .categoriesItems {
-    width:80%;
-    margin:auto; /*!Pourquoi la div n'est pas centrée ??*/
-    display:flex;
+    width: 80%;
+    margin: auto;
+    /*!Pourquoi la div n'est pas centrée ??*/
+    display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
     gap: 6rem;
+    flex-wrap: wrap;
+    box-sizing: border-box;
 
-    div {
-        display:flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        gap:1rem;
-    }
+}
+
+.categoriesItems>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cateRond {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    overflow: hidden;
+
+}
+
+.cateRond img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
 }

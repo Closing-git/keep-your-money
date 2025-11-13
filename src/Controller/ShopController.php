@@ -33,6 +33,7 @@ final class ShopController extends AbstractController
         $accessoiresBas = $em->getRepository(Accessoire::class)->findBy(['typeAccessoire' => 'bas']);
         $accessoiresTete = $em->getRepository(Accessoire::class)->findBy(['typeAccessoire' => 'tete']);
         $accessoiresAnimal = $em->getRepository(Accessoire::class)->findBy(['typeAccessoire' => 'animal']);
+        $accessoiresChaussure = $em->getRepository(Accessoire::class)->findBy(['typeAccessoire' => 'chaussure']);
         $accessoiresObjetMainDroite = $em->getRepository(Accessoire::class)->findBy(['typeAccessoire' => 'objet main droite']);
         $accessoiresObjetMainGauche = $em->getRepository(Accessoire::class)->findBy(['typeAccessoire' => 'objet main gauche']);
         $accessoiresFonds = $em->getRepository(Accessoire::class)->findBy(['typeAccessoire' => 'fonds']);
@@ -48,6 +49,7 @@ final class ShopController extends AbstractController
             'accessoiresBas' => $accessoiresBas,
             'accessoiresTete' => $accessoiresTete,
             'accessoiresAnimal' => $accessoiresAnimal,
+            'accessoiresChaussure' => $accessoiresChaussure,
             'accessoiresObjetMainDroite' => $accessoiresObjetMainDroite,
             'accessoiresObjetMainGauche' => $accessoiresObjetMainGauche,
             'accessoiresFonds' => $accessoiresFonds,
@@ -97,6 +99,9 @@ final class ShopController extends AbstractController
             }
             if ($type == 'filtre') {
                 $typeToutCaractere = 'Filtres';
+            }
+            if ($type == 'chaussure') {
+                $typeToutCaractere = 'Chaussures';
             }
 
             if ($type == 'filtre' || $type == 'fond') {

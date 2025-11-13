@@ -16,7 +16,7 @@
 				{% for accessoire in accessoires %}
 					{% if accessoire in accessoiresPossedes %}
 						<div class="itemCard itemPossede">
-							<img src="{{ asset('img/' ~ accessoire.visuelAccessoire) }}" alt="Image de {{ accessoire.nomAccessoire }}">
+							<img src="{{ asset('images/' ~ accessoire.visuelAccessoire) }}" alt="Image de {{ accessoire.nomAccessoire }}">
 							<div class=" nomitem-prix-acheter">
 								<div class="nomItem-prix itemPossede">
 									<p>{{ accessoire.nomAccessoire }}</p>
@@ -29,7 +29,7 @@
 					{% else %}
 
 						<div class="itemCard">
-							<img src="{{ asset('img/' ~ accessoire.visuelAccessoire) }}" alt="Image de {{ accessoire.nomAccessoire }}">
+							<img src="{{ asset('images/' ~ accessoire.visuelAccessoire) }}" alt="Image de {{ accessoire.nomAccessoire }}">
 							<div class=" nomitem-prix-acheter">
 								<div class="nomItem-prix">
 									<p>{{ accessoire.nomAccessoire }}</p>
