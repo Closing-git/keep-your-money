@@ -1,39 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Magasin
+{% block title %}Magasin | Save it !
+{% endblock %}
+
+{% block styles %}
+	<link rel="stylesheet" href="{{ asset('assets/styles/shop2.css') }}">
 {% endblock %}
 
 {% block body %}
 
-	<div>
-		<h1>MAGASIN</h1>
+	<main>
+		<div class="container boutique">
+			<h1 class="categorieItem" id="categoriesItems">{{ typeToutCaractere }}</h1>
 
-		<div>
-			Connecté en tant que :
-			{{ utilisateur.username }}
-			<a href="{{ path('app_logout') }}">Déconnexion</a>
-		</div>
+			<div class="containerItems">
+				{% for accessoire in accessoires %}
+					{% if accessoire in accessoiresPossedes %}
+						<div class="itemCard-Fond itemPossede">
+							<img src="{{ asset('img/' ~ accessoire.visuelAccessoire) }}" alt="Image de {{ accessoire.nomAccessoire }}">
+							<div class=" nomitem-prix-acheter-fond">
+								<div class="nomItem-prix itemPossede">
+									<p>{{ accessoire.nomAccessoire }}</p>
+									<p id="prixItem1">
+										Vous avez déjà cet accessoire.</p>
+								</div>
+
+							</div>
+						</div>
+					{% else %}
+
+						<div class="itemCard-Fond">
+							<img src="{{ asset('img/' ~ accessoire.visuelAccessoire) }}" alt="Image de {{ accessoire.nomAccessoire }}">
+							<div class=" nomitem-prix-acheter-fond">
+								<div class="nomItem-prix">
+									<p>{{ accessoire.nomAccessoire }}</p>
+									<p id="prixItem1">
+										{{ accessoire.prixAccessoire }}🪙</p>
+								</div>
+								<a href="{{ path('app_shop_achat', {'id': accessoire.id, 'type' : type}) }}">
+									<button id="acheterItem1" class="btn1" type="submit">Acheter</button>
+								</a>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
 
 
-		<h1>{{ typeToutCaractere }}</h1>
-
-		{% for accessoire in accessoires %}
-			<div>
-				{% if accessoire in accessoiresPossedes %}
-					<p>{{ accessoire.nomAccessoire }}</p>
-					<p>Vous avez déjà cet accessoire</p>
-					<img src="{{ asset('img/' ~ accessoire.visuelAccessoire) }}" alt="Exemple de {{ accessoire.typeAccessoire }} pour l'avatar">
-				{% else %}
-					<p>{{ accessoire.nomAccessoire }}</p>
-					<p>Prix :
-						{{ accessoire.prixAccessoire }}
-						🪙</p>
-					<img src="{{ asset('img/' ~ accessoire.visuelAccessoire) }}" alt="Exemple de {{ accessoire.typeAccessoire }} pour l'avatar">
-					<a href="{{ path('app_shop_achat', {'id': accessoire.id, 'type' : type}) }}">Acheter</a>
-				{% endif %}
 			</div>
-		{% endfor %}
-
-
-	</div>
-{% endblock %}
+		</main>
+	{% endblock %}
