@@ -18,12 +18,17 @@
     --shadow-avatar : 0px 10px 10px rgba(0, 0, 0, 0.40);
 }
 
+main {
+    position:relative;
+}
+
 .boutique {
     display:flex;
     flex-direction:column;
     justify-content: flex-start;
     align-items:space-between; /* ou start ?*/
     gap: 2rem;
+    width:80%;
 
     .containerItems {
         display:flex;
@@ -31,21 +36,27 @@
         justify-content: flex-start;
         align-items: flex-start;
         width:100%;
-        gap:2rem;
+        gap:4rem;
 
         .itemCard {
             display:flex;
             flex-direction: row;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: space-between;
             width:40%; /* !Voir si le passage à la ligne se fait avec les images*/
             gap:2rem;
+
+            img {
+                max-width:100%;
+            }
     
             .nomItem-prix-acheter {
                 display:flex;
                 flex-direction:column;
                 justify-content: space-between;
                 align-items:flex-start;
+                gap:1rem;
+                width:100%;
     
                 .nomItem-prix {
                     display:flex;
@@ -53,6 +64,28 @@
                     justify-content: space-between;
                     align-items:flex-start;
                 }
+            }
+        }
+
+        .itemCard-Fond {
+            display:flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: space-between;
+            width:40%; /* !Voir si le passage à la ligne se fait avec les images*/
+            gap:2rem;
+
+            img {
+                max-width:100%;
+            }
+
+            .nomItem-prix-acheter-Fond {
+                display:flex;
+                flex-direction:row;
+                justify-content: space-between;
+                align-items:flex-start;
+                gap:1rem;
+                width:100%;
             }
         }
     }
@@ -68,14 +101,29 @@
     justify-content: space-between;
     align-items: center;
     gap:2rem;
+    box-shadow: var(--shadow-section);
 
     .image-nomItem-prix {
         display:flex;
-        flex-direction:column;
+        flex-direction:row;
         justify-content: flex-start;
         align-items:flex-start;
         width:60%;
         gap:2rem;
+
+        .nomItem-prix {
+            flex-direction:column;
+            justify-content: flex-start;
+            align-items:flex-start;
+            gap:1rem;
+        }
+    }
+
+    .image-nomItem-prix-Fond {
+        display:flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
 
         .nomItem-prix {
             flex-direction:column;
@@ -97,6 +145,17 @@
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
+            gap:1rem;
         }
     }
 }
+
+.confHide {
+    display: none;
+}
+
+/*.confShow {
+    display:flex;
+    position:absolute;
+
+}*/
