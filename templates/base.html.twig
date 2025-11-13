@@ -2,6 +2,19 @@
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8">
+		<meta charset="UTF-8">
+		<meta
+		name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--lien CSS global :-->
+		<link
+		rel="stylesheet" href="{{ asset('assets/styles/global.css') }}">
+		<!--lien Fontawesome :-->
+		<link
+		rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+		<!--Fonts :-->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 		<title>
 			{% block title %}Save it !
 			{% endblock %}
@@ -14,38 +27,44 @@
 		{% endblock %}
 	</head>
 	<body>
-    {% if app.user %}
-		<header>
-			<div class="logo-titre">
-				<img src="" alt="Logo du site">
-			</div>
-
-			<nav>
-				<a href="{{ path('app_mon_avatar') }}">MON AVATAR</a>
-				<a href="{{ path('app_quizz') }}">DOIS-JE L'ACHETER ?</a>
-				<a href="{{ path('app_shop') }}">MAGASIN</a>
-			</nav>
-
-			<div class="connection-pseudo-money">
-				<div class="money-pseudo">
-					<p id="porteMonnaie">{{app.user.argentPossede}} 🪙
-					</p>
-					<p id="pseudo">{{ app.user.username }}</p>
+		{% if app.user %}
+			<header>
+				<div class="logo-titre">
+					<img src="" alt="Logo du site">
 				</div>
-				<i></i>
-				<!--TODO insérer icone connection-->
-				<!--! Afficher le bouton déconnection-->
-			</div>
-		</header>
 
-        {% else %}
-        <header>
-			<div class="logo-titre">
-				<img src="" alt="Logo du site">
-			</div>
+				<nav>
+					<a href="{{ path('app_mon_avatar') }}">MON AVATAR</a>
+					<a href="{{ path('app_quizz') }}">DOIS-JE L'ACHETER ?</a>
+					<a href="{{ path('app_shop') }}">MAGASIN</a>
+				</nav>
+				<div>
+					Connecté en tant que :
+					{{ utilisateur.username }}
+					<a href="{{ path('app_logout') }}">Déconnexion</a>
+				</div>
 
-		</header>
-    {% endif %}
+				<div class="connection-pseudo-money">
+					<div class="money-pseudo">
+						<p id="porteMonnaie">{{app.user.argentPossede}}
+							🪙
+						</p>
+						<p id="pseudo">{{ app.user.username }}</p>
+					</div>
+					<i></i>
+					<!--TODO insérer icone connection-->
+					<!--! Afficher le bouton déconnection-->
+				</div>
+			</header>
+
+		{% else %}
+			<header>
+				<div class="logo-titre">
+					<img src="" alt="Logo du site">
+				</div>
+
+			</header>
+		{% endif %}
 
 		{% block body %}{% endblock %}
 
