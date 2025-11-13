@@ -31,6 +31,20 @@ const btnChangeCat   = document.getElementById("btn-change-cat");
 
 let currentView = "items";
 
+// Catégorie choisie 
+
+let currentCat = null;
+
+// début du qcm - logique du qcm 
+
+let currentQuestionId = null; 
+let questionHistory   = [];
+
+// nombre de jetons gagnés si la personne renonce à l'achat
+
+let currentJetons     = 0;
+
+
 // Affichage des sections 
 
 function showSection(viewName) 
@@ -45,13 +59,16 @@ function showSection(viewName)
     if (viewName === "items") 
     {
         sectionItems.hidden = false;
-    } else if (viewName === "intro") 
+    } 
+    else if (viewName === "intro") 
     {
         sectionIntro.hidden = false;
-    } else if (viewName === "quiz") 
+    } 
+    else if (viewName === "quiz") 
     {
         sectionQuiz.hidden = false;
-    } else if (viewName === "result") 
+    } 
+    else if (viewName === "result") 
     {
         sectionResult.hidden = false;
     }
@@ -99,98 +116,144 @@ const introData =
     }
 };
 
+// mot utilisé dans les questions/résultats selon la catégorie
+
+const objetLabels = {
+    livres:     "livre",
+    vetements:  "vêtement",
+    meubles:    "meuble",
+    jeux:       "jeu-vidéo",
+    collations: "collation",
+    loisirs:    "activité de loisir"
+};
+
 // chemin qcm + questions + choix 
 
 const qcmChemin = {
 
-    // livres 
+    // modèle de qcm commun (livres, vetements, etc.)
 
     livres: 
     {
         start: "q1",
         questions: 
         {
+            // 1. Quel est son prix ?
+
             q1: {
-                texte: "Quel est son prix ?",
+                texte: "Quel est le prix de cet {{objet}} ?",
                 choix: [
-                    { label: "0–10 €",       next: "q2" },
-                    { label: "10–20 €",      next: "q2" },
-                    { label: "20–30 €",      next: "q3" },
-                    { label: "Plus de 30 €", next: "res_non" }
+                    { label: "0–10 €",        next: "q2", jetons: 10 },
+                    { label: "10–20 €",       next: "q2", jetons: 20 },
+                    { label: "20–30 €",       next: "q3", jetons: 30 },
+                    { label: "Plus de 30 €",  next: "q3", jetons: 40 }
                 ]
             },
+
+            // 2. Combien à tu dépensé en loisir/plaisir cette semaine ?
+
             q2: 
             {
-                texte: "Combien as-tu dépensé en loisir/plaisir cette semaine ?",
+                texte: "Combien as-tu déjà dépensé en loisir / plaisir cette semaine ?",
                 choix: [
-                    { label: "0–10 €",       next: "q3" },
-                    { label: "10–20 €",      next: "q3" },
-                    { label: "20–30 €",      next: "q4" },
-                    { label: "30–50 €",      next: "res_non" },
-                    { label: "Plus de 50 €", next: "res_non" }
+                    { label: "0–10 €",        next: "q3" },
+                    { label: "10–20 €",       next: "q3" },
+                    { label: "20–30 €",       next: "q4" },
+                    { label: "30–50 €",       next: "res_non" },
+                    { label: "Plus de 50 €",  next: "res_non" }
                 ]
             },
+
+            // 3. Cet achat pourrait-il t'empêcher de payer ... ?
+
             q3: 
             {
-                texte: "Cela rentre-t-il dans ton budget ?",
+                texte: "Cet achat pourrait-il t'empêcher de payer quelque chose de plus utile cette semaine, ce mois-ci ou cette année (facture, réparation, sortie prévue depuis longtemps...) ?",
                 choix: [
-                    { label: "Oui",  next: "q4" },
-                    { label: "Non", next: "res_non" }
+                    { label: "Non, aucun risque",                  next: "q4" },
+                    { label: "Oui, ça pourrait poser problème",    next: "res_non" }
                 ]
             },
+
+            // 4. Est-ce un {{objet}} que tu souhaites depuis un moment ?
+
             q4: 
             {
-                texte: "Est-ce un livre que tu souhaites depuis un moment ?",
+                texte: "Est-ce un {{objet}} que tu souhaites depuis un moment ?",
                 choix: [
-                    { label: "Oui",                    next: "q5" },
+                    { label: "Oui",                     next: "q5" },
                     { label: "C’est un désir spontané", next: "res_maybe" }
                 ]
             },
+
+            // 5. As-tu déjà un {{objet}} similaire ?
+
             q5: 
             {
-                texte: "As-tu déjà un livre similaire ?",
+                texte: "As-tu déjà un {{objet}} similaire ?",
                 choix: [
                     { label: "Oui", next: "q6" },
                     { label: "Non", next: "q6" }
                 ]
             },
+
+            // 6. Dans quelles émotions es-tu ?
+
             q6: 
             {
-                texte: "Dans quelles émotions es-tu ?",
+                texte: "Dans quelles émotions es-tu au moment où tu veux acheter cet {{objet}} ?",
                 choix: [
                     { label: "Stress",     next: "res_non" },
                     { label: "Colère",     next: "res_non" },
                     { label: "Fatigue",    next: "res_maybe" },
                     { label: "Tristesse",  next: "res_maybe" },
-                    { label: "Joie",       next: "res_ok" },
-                    { label: "Calme",      next: "res_ok" }
+                    { label: "Joie",       next: "q8" },
+                    { label: "Calme",      next: "q8" }
+                ]
+            },
+
+            // 8. Alors tu l’as acheté ?
+
+            q8:
+            {
+                texte: "Alors, finalement, as-tu acheté cet {{objet}} ?",
+                choix: [
+                    { label: "Oui",  next: "res_ok" },
+                    { label: "Non",  next: "res_jetons" }
                 ]
             }
+
+            // TODO : tu pourras ajouter d'autres questions (quantité, propositions, etc.)
         },
         results: 
         {
             res_ok:
-                "Cet achat semble raisonnable : il te fait du bien et reste cohérent avec ton budget.",
+                "Cet achat de {{objet}} semble raisonnable : il te fait du bien et reste cohérent avec ton budget.",
             res_maybe:
-                "Cet achat n’est pas indispensable. Réfléchis encore un peu avant de te décider.",
+                "Cet achat de {{objet}} n’est pas indispensable. Réfléchis encore un peu avant de te décider.",
             res_non:
-                "Ce livre ne semble pas être un vrai besoin pour le moment. Tu peux garder ton argent."
+                "Ce {{objet}} ne semble pas être un vrai besoin pour le moment. Tu peux garder ton argent.",
+            // Pour res_jetons, le texte est généré dynamiquement en JS
+            res_jetons:
+                ""
         }
     }
 };
 
+// Réutiliser le même qcm pour les autres catégories
 
+qcmChemin.vetements  = qcmChemin.livres;
+qcmChemin.meubles    = qcmChemin.livres;
+qcmChemin.jeux       = qcmChemin.livres;
+qcmChemin.collations = qcmChemin.livres;
 
-// Catégorie choisie 
-
-let currentCat = null;
 
 // Click sur bouton d'un item
 
 const itemButtons = document.querySelectorAll("#items-list button[data-cat]");
 
 itemButtons.forEach((btn) => 
-    {
+{
     btn.addEventListener("click", () => {
         const catKey = btn.dataset.cat;  // ex : "vetements"
         currentCat = catKey;
@@ -198,6 +261,11 @@ itemButtons.forEach((btn) =>
         const data = introData[catKey];
         introTitre.textContent = data.titre;
         introTexte.textContent = data.texte;
+
+        // reset de l'état du qcm quand on change de catégorie
+        currentQuestionId = null;
+        questionHistory   = [];
+        currentJetons     = 0;
 
         showSection("intro");
     });
@@ -207,7 +275,11 @@ itemButtons.forEach((btn) =>
 
 btnChangeCat.addEventListener("click", () => 
 {
-    currentCat = null;
+    currentCat        = null;
+    currentQuestionId = null;
+    questionHistory   = [];
+    currentJetons     = 0;
+
     showSection("items");
 });
 
@@ -218,7 +290,7 @@ btnStart.addEventListener("click", () => {
 
     const dataCat = qcmChemin[currentCat];
 
-    // Catégorie non encore traitée
+    // Catégorie non encore traitée (sécurité)
     if (!dataCat || !dataCat.start) {
         resTexte.textContent = "In coming…";
         showSection("result");
@@ -226,16 +298,12 @@ btnStart.addEventListener("click", () => {
     }
 
     // Catégorie prête → lancer le QCM
-    questionHistory = [];
+    questionHistory   = [];
     currentQuestionId = dataCat.start;
+    currentJetons     = 0;
 
     showQuestionById(currentQuestionId);
 });
-
-// début du qcm - logique du qcm 
-
-let currentQuestionId = null; 
-let questionHistory = [];
 
 // Afficher une question selon son id (q1, q2, q3, ...)
 
@@ -254,7 +322,10 @@ function showQuestionById(questionId) {
 
     currentQuestionId = questionId;
 
-    qTitre.textContent = question.texte;
+    const labelObjet = objetLabels[currentCat] || "objet";
+    const texteQuestion = question.texte.replaceAll("{{objet}}", labelObjet);
+
+    qTitre.textContent = texteQuestion;
     qChoixZone.innerHTML = "";
 
     question.choix.forEach((c) => {
@@ -263,6 +334,13 @@ function showQuestionById(questionId) {
         btn.textContent = c.label;
 
         btn.addEventListener("click", () => {
+
+            // si cette réponse définit un nombre de jetons, on le mémorise
+
+            if (typeof c.jetons === "number") {
+                currentJetons = c.jetons;
+            }
+
             onAnswer(c.next);
         });
 
@@ -274,27 +352,40 @@ function showQuestionById(questionId) {
 
 // quand on choisit une réponse
 
-// quand on choisit une réponse
-
 function onAnswer(nextKey) {
     const dataCat = qcmChemin[currentCat];
     if (!dataCat) return;
 
     // On mémorise la question actuelle dans l'historique
-    // (pour pouvoir revenir en arrière avec le bouton retour)
+
     if (currentQuestionId) {
         questionHistory.push(currentQuestionId);
     }
 
-    // Si c'est un résultat final (res_ok, res_maybe, res_non)
+    // Cas spécial : résultat avec gain de jetons
+
+    if (nextKey === "res_jetons") {
+        const labelObjet = objetLabels[currentCat] || "objet";
+        resTexte.textContent = 
+            "Bravo, tu as décidé de ne pas acheter ce " + labelObjet +
+            ". Tu gagnes " + currentJetons + " jetons virtuels !";
+        showSection("result");
+        return;
+    }
+
+    // Si c'est un résultat final classique (res_ok, res_maybe, res_non)
+
     if (typeof nextKey === "string" && nextKey.startsWith("res_")) {
-        const texte = dataCat.results[nextKey] || "Fin du quiz.";
+        const labelObjet = objetLabels[currentCat] || "objet";
+        let texte = dataCat.results[nextKey] || "Fin du quiz.";
+        texte = texte.replaceAll("{{objet}}", labelObjet);
         resTexte.textContent = texte;
         showSection("result");
         return;
     }
 
     // Sinon -> avancer vers la prochaine question
+
     showQuestionById(nextKey);
 }
 
@@ -320,15 +411,21 @@ btnBack.addEventListener("click", () =>
     // Si on est sur l'intro -> retour à la liste des catégories
     else if (currentView === "intro") 
     {
-        currentCat = null;
+        currentCat        = null;
+        currentQuestionId = null;
+        questionHistory   = [];
+        currentJetons     = 0;
+
         showSection("items");
     } 
     // Si on est sur le résultat -> retour à la liste des catégories
     else if (currentView === "result") 
     {
-        currentCat = null;
+        currentCat        = null;
         currentQuestionId = null;
-        questionHistory = [];
+        questionHistory   = [];
+        currentJetons     = 0;
+
         showSection("items");
     } 
     else 
