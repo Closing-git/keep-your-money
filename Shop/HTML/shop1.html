@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--lien CSS global :-->
+    <link rel="stylesheet" href="../../StyleCSS/global.css">
+    <!--lien Fontawesome :-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--Fonts :-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     <title>Magasin | Save it !</title>
 </head>
 <body>
@@ -19,59 +27,72 @@
             <a href="">MAGASIN</a>
         </nav>
 
-        <div class="connection-pseudo-money">
+        <div class="connexion-pseudo-money">
             <div class="money-pseudo">
-                <p id="porteMonnaie">🪙 </p>
-                <p id="pseudo"></p>
+                <p id="porteMonnaie" class="porteMonnaie">🪙 </p>
+                <p id="pseudo">User</p>
             </div>
 
-            <button id="iconeLogout">
+            <button class="iconeLogout" id="iconeLogout">
                 <i class="fa-solid fa-user"></i>
             </button>
 
-            <button id="btnLogout"></button>
+            <button class="btnLogout hide show" id="btnLogout">Déconnexion</button>
         </div>
     </header>
 
     <main>
         <h1>Que veux-tu acheter pour ton avatar ?</h1>
-        <div class="containerCategoriesItems">
+        <div class="container CategoriesItems">
 
             <div class="fond">
                 <a href =""><img src="" alt="Exemple de fond pour l'avatar">
                 </a>
                 <a href ="">Fond</a>
             </div>
-            <div class="chapeau">
-                <a href =""><img src="" alt="Exemple de chapeau pour l'avatar">
-                </a>
-                <a href ="">Chapeau</a>
-            </div>
-            <div class="tenue">
+
+             <div class="tenue">
                 <a href =""><img src="" alt="Exemple de tenue pour l'avatar">
                 </a>
                 <a href ="">Tenue</a>
             </div>
-            <div class="accessoireMmainGauche">
-                <a href =""><img src="" alt="Exemple d'accessoire pour l'avatar">
-                </a>
-                <a href ="">Accessoire main gauche</a>
-            </div>
-            <div class="accessoireMainDroite">
-                <a href =""><img src="" alt="Exemple d'accessoire pour l'avatar">
-                </a>
-                <a href ="">Accessoire main gauche</a>
-            </div>
-            <div class="animal">
-                <a href =""><img src="" alt="Exemple d'animal de compagnie pour l'avatar">
-                </a>
-                <a href ="">Animal de compagnie</a>
-            </div>
+
             <div class="coupe-de-cheveux">
                 <a href =""><img src="" alt="Exemple de coupe de cheveux pour l'avatar">
                 </a>
                 <a href ="">Coupe de cheveux</a>
             </div>
+
+            <div class="chapeau">
+                <a href =""><img src="" alt="Exemple de chapeau pour l'avatar">
+                </a>
+                <a href ="">Chapeau</a>
+            </div>
+
+            <div class="accessoireMmainGauche">
+                <a href =""><img src="" alt="Exemple d'accessoire pour l'avatar">
+                </a>
+                <a href ="">Accessoire main gauche</a>
+            </div>
+
+            <div class="accessoireMainDroite">
+                <a href =""><img src="" alt="Exemple d'accessoire pour l'avatar">
+                </a>
+                <a href ="">Accessoire main gauche</a>
+            </div>
+
+            <div class="chaussures">
+                <a href =""><img src="" alt="Exemple de chaussures pour l'avatar">
+                </a>
+                <a href ="">Chaussures</a>
+            </div>
+
+            <div class="animal">
+                <a href =""><img src="" alt="Exemple d'animal de compagnie pour l'avatar">
+                </a>
+                <a href ="">Animal de compagnie</a>
+            </div>
+            
 
         </div>
     </main>

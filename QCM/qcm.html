@@ -1,35 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QCM – En as-tu vraiment besoin ?</title>
+    <script src="./Scripts/JS/qcm.js" defer></script>
 </head>
+
 <body>
-    <h1>quizz: En as-tu réellement besoin?</h1> <!--Titre de la page-->
-    <!--  Choix des items-->
-    <div> <!--cette div sera à être cachée quand la personne clique sur un theme-->
-    <h2 id="choixTheme">Choisis un thème</h2>
-    <!-- bulle des items-->
-        <button type="button">image de vêtement</button>
-        <button type="button">image de livre</button>
-        <button type="button">image de meuble</button>
-        <button type="button">image de jeux-vidéo</button>
-        <button type="button">image de collations</button>
-        <button type="button">image de loisirs</button>
-    </div>
-    <div> <!--Div à dévoiler quand la personne a choisi son thème-->
-        <h2>Tu aimerais acheter un nouveau vêtement? On va t'aider à savoir si cela est vraiment indispensable</h2>
-        <button type="button">Répondre aux questions</button>
-        <button type="button">Retour en arrière</button>
-    </div><!--à cacher une fois que la personne clique sur un des deux boutons-->
-    <div>
-        <h2>Question n°</h2>
-        <button type="button">Reponse 1</button>
-        <button type="button">Reponse 2</button>
-        <button type="button">Reponse 3</button>
-        <button type="button">Reponse 4</button>
-        <button type="button">Retour en arrière</button>
-    </div>
+    <h1>Quiz : En as-tu vraiment besoin ?</h1>
+
+    <!-- Bouton unique géré par le JS -->
+    <button id="btn-back" type="button">Retour</button>
+
+    <!-- Choix des items -->
+    <section id="items-list">
+        <h2 id="choixTheme">Choisis un thème</h2>
+
+        <button type="button" data-cat="vetements">
+            <!-- <img src="./images/vetements.png" alt="Vêtements"> -->
+            <span>Vêtements</span>
+        </button>
+
+        <button type="button" data-cat="livres">
+            <!-- <img src="./images/livres.png" alt="Livres"> -->
+            <span>Livres</span>
+        </button>
+
+        <button type="button" data-cat="jeux">
+            <!-- <img src="./images/jeux.png" alt="Jeux-vidéo"> -->
+            <span>Jeux-vidéo</span>
+        </button>
+
+        <button type="button" data-cat="collations">
+            <!-- <img src="./images/collations.png" alt="Collations"> -->
+            <span>Collations</span>
+        </button>
+
+        <button type="button" data-cat="meubles">
+            <!-- <img src="./images/meubles.png" alt="Meubles"> -->
+            <span>Meubles</span>
+        </button>
+
+        <button type="button" data-cat="loisirs">
+            <!-- <img src="./images/loisirs.png" alt="Loisirs"> -->
+            <span>Loisirs</span>
+        </button>
+    </section>
+
+    <!-- Intro du QCM -->
+    <section id="intro-qcm" hidden>
+        <h2 id="intro-titre"></h2>
+        <p id="intro-texte"></p>
+
+        <button id="btn-start" type="button">Répondre aux questions</button>
+        <button id="btn-change-cat" type="button">Changer de catégorie</button>
+    </section>
+
+    <!-- Zone du quiz -->
+    <section id="quiz" hidden>
+        <h2 id="q-titre"></h2>
+        <div id="q-choix" class="zone-reponses"></div>
+    </section>
+
+    <!-- Résultat final -->
+    <section id="resultat" hidden>
+        <h2>Résultat</h2>
+        <p id="res-texte"></p>
+    </section>
 </body>
+
 </html>
