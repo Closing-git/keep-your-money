@@ -11,7 +11,12 @@
 
 	<main>
 		<div class="container boutique">
-			<h1 class="categorieItem" id="categoriesItems">{{ typeToutCaractere }}</h1>
+			<div class="entete">
+				<h1 class="categorieItem" id="categoriesItems">{{ typeToutCaractere }}</h1>
+				<a href="{{ path('app_shop') }}">
+					<button id="btnAnnuler" class="btn2" type="submit">Retour</button>
+				</a>
+			</div>
 
 			<div class="containerItems">
 				{% for accessoire in accessoires %}
@@ -44,11 +49,6 @@
 						</div>
 					{% endif %}
 				{% endfor %}
-				<div class="boutons">
-					<a href="{{ path('app_shop') }}">
-						<button id="btnAnnuler" class="btn2" type="submit">Retour</button>
-					</a>
-				</div>
 
 
 			</div>

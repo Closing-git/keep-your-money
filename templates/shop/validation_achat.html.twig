@@ -11,33 +11,38 @@
 
 	<main>
 		<div class="confirmation confShow">
-			<h1>CONFIRMER L'ACHAT</h1>
-			<div class="image-nomItem-prix-Fond">
-				<div class="nomItem-prix">
-					<p>{{ accessoire.nomAccessoire }}</p>
-					<p id="prixItemSelect">
-						{{ accessoire.prixAccessoire }}
-						🪙</p>
+				<h1>CONFIRMER L'ACHAT</h1>
+			<div class="itemConfirmation">
+				<div class="image-nomItem-prix-Fond">
+					<div class="nomItem-prix">
+						<p>{{ accessoire.nomAccessoire }}</p>
+						<p id="prixItemSelect">
+							{{ accessoire.prixAccessoire }}
+							🪙</p>
+					</div>
+					<img id="imgConfirm" src="{{ asset('images/' ~ accessoire.visuelAccessoire) }}" alt="blabla">
 				</div>
-				<img id="imgConfirm" src="{{ asset('images/' ~ accessoire.visuelAccessoire) }}" alt="blabla">
 			</div>
-
 			<div class="boutons">
-				<a href="{{ path('app_shop_type', {'type': type}) }}">
-					<button id="btnAnnuler" class="btn2" type="submit">Annuler</button>
-				</a>
+				<div>
+					<a href="{{ path('app_shop_type', {'type': type}) }}">
+						<button id="btnAnnuler" class="btn2" type="submit">Annuler</button>
+					</a>
+				</div>
 				{% if argentPossede < accessoire.prixAccessoire %}
 					<p>Tu n'as pas assez d'argent, il te manque
 						{{(accessoire.prixAccessoire - argentPossede) }}
 						🪙</p>
 				{% else %}
-					<form action="{{ path('app_shop_achat', {'type': type, 'id': id}) }}" method="POST">
-						<input type="hidden" name="_token" value="{{ csrf_token('acheter' ~ accessoire.id) }}">
-						<p id="argentRestant">Il te restera
-							{{ argentPossede - accessoire.prixAccessoire }}
-							🪙</p>
-						<button id="btnConfirm" class="btn1" type="submit">Confirmer</button>
-					</form>
+					<div class="confirmAndRest">
+						<form action="{{ path('app_shop_achat', {'type': type, 'id': id}) }}" method="POST">
+							<input type="hidden" name="_token" value="{{ csrf_token('acheter' ~ accessoire.id) }}">
+							<p id="argentRestant">Il te restera
+								{{ argentPossede - accessoire.prixAccessoire }}
+								🪙</p>
+							<button id="btnConfirm" class="btn1" type="submit">Confirmer</button>
+						</form>
+					</div>
 				{% endif %}
 
 			</div>
