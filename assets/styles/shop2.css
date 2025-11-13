@@ -1,0 +1,161 @@
+:root {
+    --beige-fond-page: #F8E6C6;
+    --vert-pomme-banniere-section: #A7C957;
+    --vert-pomme-border: #85A146;
+    --vert-foret-btn1-btn4: #31824A;
+    --vert-foret-border: #64B57D;
+    --rouge-btn2: #BC4749;
+    --rouge-btn2-border: #D79192;
+    --mauve-btn3: #985277;
+    --mauve-btn3-border: #C197AD;
+    --vert-ultraclair-panneau: #DCE9BC;
+    --vert-clair-inputs-border: #CADF9A;
+    --beige-avatar: #F7CA9C;
+    --beige-avatar-border: #F5B87B;
+
+    --shadow-section: 0px 6px 10px rgba(61, 42, 22, 0.25);
+    --shadow-bouton : 0px 2px 4px rgba(0, 0, 0, 0.25);
+    --shadow-avatar : 0px 10px 10px rgba(0, 0, 0, 0.40);
+}
+
+main {
+    position:relative;
+}
+
+.boutique {
+    display:flex;
+    flex-direction:column;
+    justify-content: flex-start;
+    align-items:space-between; /* ou start ?*/
+    gap: 2rem;
+    width:80%;
+
+    .containerItems {
+        display:flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width:100%;
+        gap:4rem;
+
+        .itemCard {
+            display:flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: space-between;
+            width:40%; /* !Voir si le passage à la ligne se fait avec les images*/
+            gap:2rem;
+
+            img {
+                max-width:100%;
+            }
+    
+            .nomItem-prix-acheter {
+                display:flex;
+                flex-direction:column;
+                justify-content: space-between;
+                align-items:flex-start;
+                gap:1rem;
+                width:100%;
+    
+                .nomItem-prix {
+                    display:flex;
+                    flex-direction:column;
+                    justify-content: space-between;
+                    align-items:flex-start;
+                }
+            }
+        }
+
+        .itemCard-Fond {
+            display:flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: space-between;
+            width:40%; /* !Voir si le passage à la ligne se fait avec les images*/
+            gap:2rem;
+
+            img {
+                max-width:100%;
+            }
+
+            .nomItem-prix-acheter-Fond {
+                display:flex;
+                flex-direction:row;
+                justify-content: space-between;
+                align-items:flex-start;
+                gap:1rem;
+                width:100%;
+            }
+        }
+    }
+}
+
+.confirmation {
+    background-color: var(--vert-ultraclair-panneau);
+    border:2px solid var(--vert-pomme-border);
+    border-radius: 2rem;
+    padding: 2rem;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: center;
+    gap:2rem;
+    box-shadow: var(--shadow-section);
+
+    .image-nomItem-prix {
+        display:flex;
+        flex-direction:row;
+        justify-content: flex-start;
+        align-items:flex-start;
+        width:60%;
+        gap:2rem;
+
+        .nomItem-prix {
+            flex-direction:column;
+            justify-content: flex-start;
+            align-items:flex-start;
+            gap:1rem;
+        }
+    }
+
+    .image-nomItem-prix-Fond {
+        display:flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .nomItem-prix {
+            flex-direction:column;
+            justify-content: flex-start;
+            align-items:flex-start;
+            gap:1rem;
+        }
+    }
+
+    .boutons {
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        width:100%;
+
+        div {
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap:1rem;
+        }
+    }
+}
+
+.confHide {
+    display: none;
+}
+
+/*.confShow {
+    display:flex;
+    position:absolute;
+
+}*/

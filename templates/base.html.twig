@@ -15,6 +15,9 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		{% block styles %}
+		{% endblock %}
+		
 		<title>
 			{% block title %}Save it !
 			{% endblock %}
@@ -30,7 +33,8 @@
 		{% if app.user %}
 			<header>
 				<div class="logo-titre">
-					<img src="" alt="Logo du site">
+					<img src=" {{ asset('images/logo.png') }}" alt="Logo du site">
+					<h1>SAVE IT !</h1>
 				</div>
 
 				<nav>
@@ -38,29 +42,29 @@
 					<a href="{{ path('app_quizz') }}">DOIS-JE L'ACHETER ?</a>
 					<a href="{{ path('app_shop') }}">MAGASIN</a>
 				</nav>
-				<div>
-					Connecté en tant que :
-					{{ utilisateur.username }}
-					<a href="{{ path('app_logout') }}">Déconnexion</a>
-				</div>
+
 
 				<div class="connection-pseudo-money">
 					<div class="money-pseudo">
-						<p id="porteMonnaie">{{app.user.argentPossede}}
+						<p class="porteMonnaie" id="porteMonnaie">{{app.user.argentPossede}}
 							🪙
 						</p>
 						<p id="pseudo">{{ app.user.username }}</p>
 					</div>
 					<i></i>
-					<!--TODO insérer icone connection-->
-					<!--! Afficher le bouton déconnection-->
+					<button class="iconeLogout" id="iconeLogout">
+						<i class="fa-solid fa-user"></i>
+					</button>
+
+					<button class="btnLogout hide show" id="btnLogout">Déconnexion</button>
 				</div>
 			</header>
 
 		{% else %}
 			<header>
 				<div class="logo-titre">
-					<img src="" alt="Logo du site">
+					<img src=" {{ asset('images/logo.png') }}" alt="Logo du site">
+					<h1>SAVE IT !</h1>
 				</div>
 
 			</header>
@@ -69,17 +73,14 @@
 		{% block body %}{% endblock %}
 
 		<footer>
-			<p class="credits">Ce site a été créé par :<br>
-				Chloé Fersing<br>
-				Lisa Poinambalom<br>
-				Sam Fievez<br>
-				Stephanie Renee Vancauwenberghe<br>
-				Caroline Poveda<br>
-				Charlotte Sadowczyk</p>
-			<div class="iconesReseauxSociaux">
-				<i></i>
-				<i></i>
-				<i></i>
+			<p class="credits">Ce site a été créé par :</p>
+			<div class="nomsCredits">
+				<p>Chloé Fersing,</p>
+				<p>Lisa Poinambalom,</p>
+				<p>Sam Fievez,</p>
+				<p>Stephanie Vancauwenberghe,</p>
+				<p>Caroline Poveda,</p>
+				<p>Charlotte Sadowczyk</p>
 			</div>
 		</footer>
 	</body>

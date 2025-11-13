@@ -3,15 +3,18 @@
 {% block title %}Magasin | Save it !
 {% endblock %}
 
+{% block styles %}
+	<link rel="stylesheet" href="{{ asset('assets/styles/shop1.css') }}">
+
+
+{% endblock %}
+
 {% block body %}
 
-	<div>
-		<h1>MAGASIN</h1>
-
-
+	<main>
 
 		<h1>Que veux-tu acheter pour ton avatar ?</h1>
-		<div class="container CategoriesItems">
+		<div class="categoriesItems">
 
 			<div class="haut">
 				<a href="{{ path('app_shop_type', {'type': 'haut'}) }}"><img src="" alt="Exemple de haut pour l'avatar">
@@ -66,5 +69,5 @@
 		</div>
 
 
-	</div>
+	</main>
 {% endblock %}
