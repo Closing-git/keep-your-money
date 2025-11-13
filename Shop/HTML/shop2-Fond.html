@@ -19,23 +19,23 @@
 
     <header>
         <div class="logo-titre">
-            <img src="" alt="Logo du site">
+            <img src="../../Images/logo.png" alt="Logo du site" class="logo">
         </div>
 
         <nav>
             <a href="">MON AVATAR</a>
             <a href="">DOIS-JE L'ACHETER ?</a>
-            <a href="">MAGASIN</a>
+            <a class="navPage" href="">MAGASIN</a>
         </nav>
 
         <div class="connexion-pseudo-money">
             <div class="money-pseudo">
-                <p id="porteMonnaie">🪙 </p>
+                <p id="porteMonnaie" class="porteMonnaie">🪙 </p>
                 <p id="pseudo">User</p>
             </div>
             
-            <button id="iconeLogout">
-                <i class="fa-solid fa-user"></i>
+            <button class="iconeLogout" id="iconeLogout">
+                <i class="fa-solid fa-user"></i> <!--!Pouquoi l'icone ne se met pas en 2rem ?-->
             </button>
 
             <button class="btnLogout hide show"  id="btnLogout">Déconnexion</button>
@@ -49,9 +49,9 @@
             <!-- Page pour les FONDS -> image au-dessus, et nom article + prix + bouton en dessous-->
             <div class="containerItems">
 
-                <div class="itemCard">
-                    <img src="" alt="">
-                    <div class="nomItem-prix-acheter">
+                <div class="itemCard-Fond">
+                    <img src="../../Images/fond-base.png" alt="Paysage de verdure et de montagne">
+                    <div class="nomItem-prix-acheter-Fond">
                         <div class="nomItem-prix">
                             <p>Item1</p>
                             <p id="prixItem1"> 🪙</p>
@@ -60,9 +60,9 @@
                     </div>
                 </div>
 
-                <div class="itemCard">
-                    <img src="" alt="">
-                    <div class="nomItem-prix-acheter">
+                <div class="itemCard-Fond">
+                    <img src="../../Images/fond-plage.png" alt="Paysage de plage exotique">
+                    <div class="nomItem-prix-acheter-Fond">
                         <div class="nomItem-prix">
                             <p>Item2</p>
                             <p id="prixItem2"> 🪙</p>
@@ -71,9 +71,9 @@
                     </div>
                 </div>
 
-                <div class="itemCard">
-                    <img src="" alt="">
-                    <div class="nomItem-prix-acheter">
+                <div class="itemCard-Fond">
+                    <img src="../../Images/fond-ville.png" alt="Paysage de ville au soleil couchant">
+                    <div class="nomItem-prix-acheter-Fond">
                         <div class="nomItem-prix">
                             <p>Item3</p>
                             <p id="prixItem3"> 🪙</p>
@@ -82,9 +82,9 @@
                     </div>
                 </div>
 
-                <div class="itemCard">
+                <div class="itemCard-Fond">
                     <img src="" alt="">
-                    <div class="nomItem-prix-acheter">
+                    <div class="nomItem-prix-acheter-Fond">
                         <div class="nomItem-prix">
                             <p>Item4</p>
                             <p id="prixItem4"> 🪙</p>
@@ -101,8 +101,8 @@
 
         <div class="confirmation confHide confShow">
             <h1>CONFIRMER L'ACHAT</h1>
-            <div class="image-nomItem-prix">
-                <img id="imgConfirm" src="" alt="">
+            <div class="image-nomItem-prix-Fond">
+                <img id="imgConfirm" src="" alt="blabla">
                 <div class="nomItem-prix">
                     <p>Item</p>
                     <p id="prixItemSelect"> 🪙</p>
