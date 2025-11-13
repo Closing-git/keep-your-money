@@ -2,8 +2,12 @@
 
 {% block title %}Mon avatar
 {% endblock %}
-
+{% block stylesheets %}
+     
+{% endblock %}
 {% block body %}
+ 	<link rel="stylesheet" href="{{ asset('/StyleCSS/monavatar.css') }}">
+	<script src="{{ asset('/script/avatar.js') }}"defer></script>
 
 	<div>
 		<h1>mon avatar</h1>
@@ -18,4 +22,49 @@
             <li><a href="{{ path('app_quizz') }}">Questionnaire</a></li>
 		</ul>
 	</nav>
+	 </div>
+    <h2>MA GARDE ROBE</h2>
+    <div class="gardeRobe">
+        <div>
+            <h5>Fonds</h5>
+            <a href="#" data-image="{{ asset('images/fond-base.png') }}">Fond de base</a>
+            {% for fond in fondsPossedes %}
+                  <a href="#" data-image="{{ asset('images/' ~ fond.visuelAccessoire) }}">{{ fond.nomAccessoire }}</a>
+            {% endfor %}
+            
+
+        </div>
+        <div>
+            <h5>T-shirt</h5>
+            <a href="#">T-shirt 1</a>
+            <a href="#">T-shirt 2</a>
+            <a href="#">T-shirt 3</a>
+        </div>
+         <div>
+            <h5>Pantalons</h5>
+            <a href="#">Pantalon 1</a>
+            <a href="#">Pantalon 2</a>
+            <a href="#">Pantalon 3</a>
+        </div>
+         <div>
+            <h5>Chapeaux</h5>
+            <a href="#">Chapeau 1</a>
+            <a href="#">Chapeau 2</a>
+            <a href="#">Chapeau 3</a>
+        </div>
+        <div>
+            <h5>Accessoires</h5>
+            <a href="#">Accessoire 1</a>
+            <a href="#">Accessoire 2</a>
+            <a href="#">Accessoire 3</a>
+        </div>
+       
+        </div>
+		<div class="ContainerAvatar">
+        <div class="zoneAvatar">
+            <img  id="avatar-fond" src="{{ asset('images/fond-base.png') }}" alt="fondDeBase">
+            <button type="button" id="Réinitialiser">Réinitialiser</button>
+            <button type="button" id="Sauvegarder">Sauvegarder la tenue</button>
+        </div>
+		</div>
 {% endblock %}
