@@ -53,4 +53,91 @@ final class ShopController extends AbstractController
         ];
         return $this->render('shop/index.html.twig', $vars);
     }
+
+    #[Route('/magasin/{type?}', name: 'app_shop_type')]
+    public function type(string $type, EntityManagerInterface $entityManager): Response
+    {
+        $accessoireRepository = $entityManager->getRepository(Accessoire::class);
+        //Récupérer l'utilisateur connecté et son argent
+        $utilisateurConnecte = $this->getUser();
+        $utilisateur = $entityManager->getRepository(Utilisateur::class)->find($utilisateurConnecte);
+        $argentPossede = $utilisateur->getArgentPossede();
+        if (!$utilisateur) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        if ($type) {
+            $accessoires = $accessoireRepository->findBy(['typeAccessoire' => $type]);
+            if ($type == 'haut') {
+                $typeToutCaractere = 'Hauts';
+            }
+
+            if ($type == 'bas') {
+                $typeToutCaractere = 'Bas';
+            }
+            if ($type == 'tete') {
+                $typeToutCaractere = 'Tête';
+            }
+            if ($type == 'animal') {
+                $typeToutCaractere = 'Animaux';
+            }
+            if ($type == 'accessoireMainDroite') {
+                $typeToutCaractere = 'Accessoires main droite';
+            }
+            if ($type == 'accessoireMainGauche') {
+                $typeToutCaractere = 'Accessoires main gauche';
+            }
+            if ($type == 'fond') {
+                $typeToutCaractere = 'Fonds';
+            }
+            if ($type == 'filtre') {
+                $typeToutCaractere = 'Filtres';
+            }
+
+            if ($type == 'filtre' || $type == 'fond') {
+                return $this->render('shop/type_grand.html.twig', [
+                    'accessoires' => $accessoires,
+                    'type' => $type,
+                    'typeToutCaractere' => $typeToutCaractere,
+                    'argentPossede' => $argentPossede,
+                    'utilisateur' => $utilisateur,
+                ]);
+            } else {
+                return $this->render('shop/type_petit.html.twig', [
+                    'accessoires' => $accessoires,
+                    'type' => $type,
+                    'typeToutCaractere' => $typeToutCaractere,
+                    'argentPossede' => $argentPossede,
+                    'utilisateur' => $utilisateur,
+                ]);
+            }
+        } else {
+            return $this->render('shop/index.html.twig', [
+                'type' => $type
+            ]);
+        }
+    }
+
+    #[Route('/magasin/{type?}/{id}', name: 'app_shop_achat')]
+    public function achat(string $type, int $id, EntityManagerInterface $entityManager): Response
+
+    {
+        //Récupérer l'utilisateur connecté et son argent
+        $utilisateurConnecte = $this->getUser();
+        $utilisateur = $entityManager->getRepository(Utilisateur::class)->find($utilisateurConnecte);
+        $argentPossede = $utilisateur->getArgentPossede();
+        if (!$utilisateur) {
+            return $this->redirectToRoute('app_login');
+        }
+        $accessoireRepository = $entityManager->getRepository(Accessoire::class);
+        $accessoire = $accessoireRepository->find($id);
+
+        return $this->render('shop/validation_achat.html.twig', [
+            'type' => $type,
+            'id' => $id,
+            'argentPossede' => $argentPossede,
+            'utilisateur' => $utilisateur,
+            'accessoire' => $accessoire,
+        ]);
+    }
 }

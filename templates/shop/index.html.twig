@@ -12,60 +12,64 @@
 			Connecté en tant que :
 			{{ utilisateur.username }}
 			<a href="{{ path('app_logout') }}">Déconnexion</a>
-
-			<h3>Haut</h3>
-			{% for accessoireHaut in accessoiresHaut %}
-				{{ accessoireHaut.nomAccessoire }}
-			{% endfor %}
-
-			<h3>Bas</h3>
-			{% for accessoireBas in accessoiresBas %}
-				{{ accessoireBas.nomAccessoire }}
-			{% endfor %}
-
-			<h3>Tête</h3>
-			{% for accessoireTete in accessoiresTete %}
-				{{ accessoireTete.nomAccessoire }}
-			{% endfor %}
-
-			<h3>Animal</h3>
-			{% for accessoireAnimal in accessoiresAnimal %}
-				{{ accessoireAnimal.nomAccessoire }}
-			{% endfor %}
-
-			<h3>Objet Main Droite</h3>
-			{% for accessoireObjetMainDroite in accessoiresObjetMainDroite %}
-				{{ accessoireObjetMainDroite.nomAccessoire }}
-			{% endfor %}
-
-			<h3>Objet Main Gauche</h3>
-			{% for accessoireObjetMainGauche in accessoiresObjetMainGauche %}
-				{{ accessoireObjetMainGauche.nomAccessoire }}
-			{% endfor %}
-
-			<h3>Fonds</h3>
-			{% for accessoireFonds in accessoiresFonds %}
-				{{ accessoireFonds.nomAccessoire }}
-			{% endfor %}
-
-			<h3>Filtres</h3>
-			{% for accessoireFiltres in accessoiresFiltres %}
-				{{ accessoireFiltres.nomAccessoire }}
-			{% endfor %}
 		</div>
 
-		<nav>
-			<ul>
-				<li>
-					<ahref="{{path('app_shop')}}">Magasin</ahref=>
-				</li>
-				<li>
-					<ahref="{{path('app_mon_avatar')}}">Mon avatar</ahref=>
-				</li>
-				<li>
-					<ahref="{{path('app_quizz')}}">Questionnaire</ahref=>
-				</li>
-			</ul>
-		</nav>
+
+		<h1>Que veux-tu acheter pour ton avatar ?</h1>
+		<div class="container CategoriesItems">
+
+			<div class="haut">
+				<a href="{{ path('app_shop_type', {'type': 'haut'}) }}"><img src="" alt="Exemple de haut pour l'avatar">
+				</a>
+				<a href="">Hauts</a>
+			</div>
+
+			<div class="bas">
+				<a href="{{ path('app_shop_type', {'type': 'bas'}) }}"><img src="" alt="Exemple de bas pour l'avatar">
+				</a>
+				<a href="">Bas</a>
+			</div>
+
+			<div class="tete">
+				<a href="{{ path('app_shop_type', {'type': 'tete'}) }}"><img src="" alt="Exemple de tête pour l'avatar">
+				</a>
+				<a href="">Tête</a>
+			</div>
+
+
+			<div class="accessoireMainGauche">
+				<a href="{{ path('app_shop_type', {'type': 'accessoireMainGauche'}) }}"><img src="" alt="Exemple d'accessoire main gauche pour l'avatar">
+				</a>
+				<a href="">Accessoires main gauche</a>
+			</div>
+
+			<div class="accessoireMainDroite">
+				<a href="{{ path('app_shop_type', {'type': 'accessoireMainDroite'}) }}"><img src="" alt="Exemple d'accessoire main droite pour l'avatar">
+				</a>
+				<a href="">Accessoires main droite</a>
+			</div>
+
+			<div class="animal">
+				<a href="{{ path('app_shop_type', {'type': 'animal'}) }}"><img src="" alt="Exemple d'animal pour l'avatar">
+				</a>
+				<a href="">Animaux</a>
+			</div>
+
+			<div class="fond">
+				<a href="{{ path('app_shop_type', {'type': 'fond'}) }}"><img src="" alt="Exemple de fond pour l'avatar">
+				</a>
+				<a href="">Fonds</a>
+			</div>
+
+			<div class="filtre">
+				<a href="{{ path('app_shop_type', {'type': 'filtre'}) }}"><img src="" alt="Exemple de filtre pour l'avatar">
+				</a>
+				<a href="">Filtres</a>
+			</div>
+
+
+		</div>
+
+
 	</div>
 {% endblock %}
