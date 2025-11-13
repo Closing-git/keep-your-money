@@ -6,11 +6,13 @@ use App\Repository\UtilisateurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_USERNAME', fields: ['username'])]
+#[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
 class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -40,18 +42,25 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
      * @var Collection<int, Accessoire>
      */
     #[ORM\ManyToMany(targetEntity: Accessoire::class, inversedBy: 'utilisateursQuiPossedent')]
+    #[ORM\JoinTable(name: 'utilisateur_possession')]
+    #[ORM\JoinColumn(name: 'utilisateur_id', referencedColumnName: 'id')]
+    #[ORM\InverseJoinColumn(name: 'accessoire_id', referencedColumnName: 'id')]
     private Collection $possession;
 
     /**
      * @var Collection<int, Accessoire>
      */
     #[ORM\ManyToMany(targetEntity: Accessoire::class)]
+    #[ORM\JoinTable(name: 'utilisateur_tenue_portee')]
+    #[ORM\JoinColumn(name: 'utilisateur_id', referencedColumnName: 'id')]
+    #[ORM\InverseJoinColumn(name: 'accessoire_id', referencedColumnName: 'id')]
     private Collection $tenuePortee;
 
     public function __construct()
     {
         $this->possession = new ArrayCollection();
         $this->tenuePortee = new ArrayCollection();
+        $this->argentPossede = 0;
     }
 
     public function getId(): ?int
@@ -124,7 +133,7 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     public function __serialize(): array
     {
         $data = (array) $this;
-        $data["\0".self::class."\0password"] = hash('crc32c', $this->password);
+        $data["\0" . self::class . "\0password"] = hash('crc32c', $this->password);
 
         return $data;
     }
