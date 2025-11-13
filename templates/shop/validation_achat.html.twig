@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Magasin
+{% endblock %}
+
+{% block body %}
+
+	<div>
+		<h1>MAGASIN</h1>
+
+		<div>
+			Connecté en tant que :
+			{{ utilisateur.username }}
+			<a href="{{ path('app_logout') }}">Déconnexion</a>
+		</div>
+
+		<h1>Confirmation ACHAT</h1>
+			<div>
+				<p>{{ accessoire.nomAccessoire }}</p>
+				<p>Prix :
+					{{ accessoire.prixAccessoire }}
+					🪙</p>
+				<img
+				src="{{ asset('img/' ~ accessoire.visuelAccessoire) }}" alt="Exemple de {{ accessoire.typeAccessoire }} pour l'avatar">
+
+                <p>Il te restera {{ argentPossede - accessoire.prixAccessoire }} 🪙</p>
+			</div>
+
+
+	</div>
+{% endblock %}
