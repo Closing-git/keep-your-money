@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--lien CSS global :-->
     <link rel="stylesheet" href="../../StyleCSS/global.css">
+    <link rel="stylesheet" href="../../StyleCSS/shop1.css">
     <!--lien Fontawesome :-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--Fonts :-->
@@ -41,57 +42,60 @@
         </div>
     </header>
 
+    <!--* Main-->
     <main>
         <h1>Que veux-tu acheter pour ton avatar ?</h1>
-        <div class="container CategoriesItems">
 
-            <div class="fond">
-                <a href =""><img src="" alt="Exemple de fond pour l'avatar">
-                </a>
-                <a href ="">Fond</a>
-            </div>
+        <div class="categoriesItems">
 
-             <div class="tenue">
-                <a href =""><img src="" alt="Exemple de tenue pour l'avatar">
-                </a>
-                <a href ="">Tenue</a>
-            </div>
+            <div class="haut">
+				<a href="{{ path('app_shop', {'type': 'haut'}) }}"><img src="" alt="Exemple de haut pour l'avatar">
+				</a>
+				<a href="">Hauts</a>
+			</div>
 
-            <div class="coupe-de-cheveux">
-                <a href =""><img src="" alt="Exemple de coupe de cheveux pour l'avatar">
-                </a>
-                <a href ="">Coupe de cheveux</a>
-            </div>
+			<div class="bas">
+				<a href="{{ path('app_shop', {'type': 'bas'}) }}"><img src="" alt="Exemple de bas pour l'avatar">
+				</a>
+				<a href="">Bas</a>
+			</div>
 
-            <div class="chapeau">
-                <a href =""><img src="" alt="Exemple de chapeau pour l'avatar">
-                </a>
-                <a href ="">Chapeau</a>
-            </div>
+			<div class="tete">
+				<a href="{{ path('app_shop', {'type': 'tete'}) }}"><img src="" alt="Exemple de tête pour l'avatar">
+				</a>
+				<a href="">Tête</a>
+			</div>
 
-            <div class="accessoireMmainGauche">
-                <a href =""><img src="" alt="Exemple d'accessoire pour l'avatar">
-                </a>
-                <a href ="">Accessoire main gauche</a>
-            </div>
 
-            <div class="accessoireMainDroite">
-                <a href =""><img src="" alt="Exemple d'accessoire pour l'avatar">
-                </a>
-                <a href ="">Accessoire main gauche</a>
-            </div>
+			<div class="accessoireMainGauche">
+				<a href="{{ path('app_shop', {'type': 'accessoireMainGauche'}) }}"><img src="" alt="Exemple d'accessoire main gauche pour l'avatar">
+				</a>
+				<a href="">Accessoires main gauche</a>
+			</div>
 
-            <div class="chaussures">
-                <a href =""><img src="" alt="Exemple de chaussures pour l'avatar">
-                </a>
-                <a href ="">Chaussures</a>
-            </div>
+			<div class="accessoireMainDroite">
+				<a href="{{ path('app_shop', {'type': 'accessoireMainDroite'}) }}"><img src="" alt="Exemple d'accessoire main droite pour l'avatar">
+				</a>
+				<a href="">Accessoires main droite</a>
+			</div>
 
-            <div class="animal">
-                <a href =""><img src="" alt="Exemple d'animal de compagnie pour l'avatar">
-                </a>
-                <a href ="">Animal de compagnie</a>
-            </div>
+			<div class="animal">
+				<a href="{{ path('app_shop', {'type': 'animal'}) }}"><img src="" alt="Exemple d'animal pour l'avatar">
+				</a>
+				<a href="">Animaux</a>
+			</div>
+
+			<div class="fond">
+				<a href="{{ path('app_shop', {'type': 'fond'}) }}"><img src="" alt="Exemple de fond pour l'avatar">
+				</a>
+				<a href="">Fonds</a>
+			</div>
+
+			<div class="filtre">
+				<a href="{{ path('app_shop', {'type': 'filtre'}) }}"><img src="" alt="Exemple de filtre pour l'avatar">
+				</a>
+				<a href="">Filtres</a>
+			</div>
             
 
         </div>
