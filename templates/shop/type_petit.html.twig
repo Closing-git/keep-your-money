@@ -19,13 +19,18 @@
 
 		{% for accessoire in accessoires %}
 			<div>
-				<p>{{ accessoire.nomAccessoire }}</p>
-				<p>Prix :
-					{{ accessoire.prixAccessoire }}
-					🪙</p>
-				<img src="{{ asset('img/' ~ accessoire.visuelAccessoire) }}" alt="Exemple de {{ accessoire.typeAccessoire }} pour l'avatar">
-				<a href="{{ path('app_shop_achat', {'id': accessoire.id, 'type' : type}) }}">Acheter</a>
-
+				{% if accessoire in accessoiresPossedes %}
+					<p>{{ accessoire.nomAccessoire }}</p>
+					<p>Vous avez déjà cet accessoire</p>
+					<img src="{{ asset('img/' ~ accessoire.visuelAccessoire) }}" alt="Exemple de {{ accessoire.typeAccessoire }} pour l'avatar">
+				{% else %}
+					<p>{{ accessoire.nomAccessoire }}</p>
+					<p>Prix :
+						{{ accessoire.prixAccessoire }}
+						🪙</p>
+					<img src="{{ asset('img/' ~ accessoire.visuelAccessoire) }}" alt="Exemple de {{ accessoire.typeAccessoire }} pour l'avatar">
+					<a href="{{ path('app_shop_achat', {'id': accessoire.id, 'type' : type}) }}">Acheter</a>
+				{% endif %}
 			</div>
 		{% endfor %}
 

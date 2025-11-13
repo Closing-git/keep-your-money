@@ -5,9 +5,11 @@ namespace App\Controller;
 use App\Entity\Accessoire;
 use App\Entity\Utilisateur;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 final class ShopController extends AbstractController
 {
@@ -66,6 +68,9 @@ final class ShopController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
+        //Récupérer les objets déjà possédés par l'utilisateur
+        $accessoiresPossedes = $utilisateur->getPossession();
+
         if ($type) {
             $accessoires = $accessoireRepository->findBy(['typeAccessoire' => $type]);
             if ($type == 'haut') {
@@ -101,6 +106,7 @@ final class ShopController extends AbstractController
                     'typeToutCaractere' => $typeToutCaractere,
                     'argentPossede' => $argentPossede,
                     'utilisateur' => $utilisateur,
+                    'accessoiresPossedes' => $accessoiresPossedes,
                 ]);
             } else {
                 return $this->render('shop/type_petit.html.twig', [
@@ -109,6 +115,7 @@ final class ShopController extends AbstractController
                     'typeToutCaractere' => $typeToutCaractere,
                     'argentPossede' => $argentPossede,
                     'utilisateur' => $utilisateur,
+                    'accessoiresPossedes' => $accessoiresPossedes,
                 ]);
             }
         } else {
@@ -118,8 +125,8 @@ final class ShopController extends AbstractController
         }
     }
 
-    #[Route('/magasin/{type?}/{id}', name: 'app_shop_achat')]
-    public function achat(string $type, int $id, EntityManagerInterface $entityManager): Response
+    #[Route('/magasin/{type?}/{id}', name: 'app_shop_achat', methods: ['POST', 'GET'])]
+    public function achat(string $type, int $id, Request $request, EntityManagerInterface $entityManager): Response
 
     {
         //Récupérer l'utilisateur connecté et son argent
@@ -131,6 +138,27 @@ final class ShopController extends AbstractController
         }
         $accessoireRepository = $entityManager->getRepository(Accessoire::class);
         $accessoire = $accessoireRepository->find($id);
+
+        //Si on valide le formulaire
+        if ($request->isMethod('POST')) {
+            // Token CSRF
+            $submittedToken = $request->request->get('_token');
+            if (!$this->isCsrfTokenValid('acheter' . $accessoire->getId(), $submittedToken)) {
+                throw new AccessDeniedException('Token CSRF invalide');
+            }
+            //Retirer l'argent du compte utilisateur
+            $utilisateur->setArgentPossede($argentPossede - $accessoire->getPrixAccessoire());
+            //Ajouter l'accessoire au compte utilisateur
+            $utilisateur->addPossession($accessoire);
+            $entityManager->persist($utilisateur);
+            $entityManager->flush();
+            return $this->redirectToRoute('app_shop_type', [
+                'type' => $type,
+                'argentPossede' => $argentPossede,
+                'utilisateur' => $utilisateur,
+                'accessoire' => $accessoire,
+            ]);
+        }
 
         return $this->render('shop/validation_achat.html.twig', [
             'type' => $type,

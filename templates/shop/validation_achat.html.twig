@@ -15,16 +15,30 @@
 		</div>
 
 		<h1>Confirmation ACHAT</h1>
-			<div>
-				<p>{{ accessoire.nomAccessoire }}</p>
-				<p>Prix :
-					{{ accessoire.prixAccessoire }}
-					🪙</p>
-				<img
-				src="{{ asset('img/' ~ accessoire.visuelAccessoire) }}" alt="Exemple de {{ accessoire.typeAccessoire }} pour l'avatar">
+		<div>
+			<p>{{ accessoire.nomAccessoire }}</p>
+			<p>Prix :
+				{{ accessoire.prixAccessoire }}
+				🪙</p>
+			<img src="{{ asset('img/' ~ accessoire.visuelAccessoire) }}" alt="Exemple de {{ accessoire.typeAccessoire }} pour l'avatar">
 
-                <p>Il te restera {{ argentPossede - accessoire.prixAccessoire }} 🪙</p>
-			</div>
+			{% if argentPossede < accessoire.prixAccessoire %}
+				<p>Tu n'as pas assez d'argent, il te manque
+					{{(accessoire.prixAccessoire - argentPossede) }}
+					🪙</p>
+
+
+			{% else %}
+				<form action="{{ path('app_shop_achat', {'type': type, 'id': id}) }}" method="POST">
+					<input type="hidden" name="_token" value="{{ csrf_token('acheter' ~ accessoire.id) }}">
+					<p>Il te restera
+						{{ argentPossede - accessoire.prixAccessoire }}
+						🪙</p>
+					<button type="submit">Confirmer l'achat</button>
+				</form>
+			{% endif %}
+			<a href="{{ path('app_shop_type', {'type': type}) }}">Annuler</a>
+		</div>
 
 
 	</div>
