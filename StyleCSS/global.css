@@ -35,15 +35,134 @@ body {
     flex-grow: 1;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+button {
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+}
+
+h1 {
+    font-size:2rem;
+    font-weight:normal;
+}
+
 header {
     background-color: var(--vert-pomme-banniere-section);
+    border-bottom: 2px solid  var(--vert-pomme-border);
     display:flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 98%;
-    margin: auto;
+    width: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    margin-bottom:3rem;
+
+    nav {
+        display:flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        flex-grow: 1;
+        gap: 3%;
+    }
+
+    .connexion-pseudo-money {
+        position:relative;
+        display:flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+
+        .money-pseudo {
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .porteMonnaie {
+                font-size: 1.7rem;;
+            }
+        }
+
+        .iconeLogout i {
+            font-size: 2rem;
+        }
+
+        .btnLogout {
+            font-size: 1rem;
+            color:white;
+            background-color: var(--vert-foret-btn1-btn4);
+            border:none;
+            border-radius:0.6rem;
+            padding:1rem;
+
+        }
+        .hide {
+                display:none; /* OU visibility:hidden ?*/
+        }
+
+        /*.show {
+            display:flex;
+            position: absolute;
+            bottom: -2.1rem;
+            right: 1rem;
+        }
+
+        .show:hover {
+            font-weight: bold;
+        }*/
+
+    }
 }
+
+main {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width:90%;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--vert-pomme-banniere-section);
+    border-top:2px solid var(--vert-pomme-border);;
+    width: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-top:3rem;
+
+    .nomsCredits {
+        display:flex;
+        flex-direction: row;
+        gap:1rem;
+    }
+}
+
+
+
+
+
+
+
 
 
 
