@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--lien CSS global :-->
     <link rel="stylesheet" href="../../StyleCSS/global.css">
-    <link rel="stylesheet" href="../../StyleCSS/shop1.css">
+    <link rel="stylesheet" href="../../StyleCSS/login.css">
     <!--lien Fontawesome :-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--Fonts :-->
@@ -23,7 +23,7 @@
             <h1>SAVE IT !</h1>
         </div>
 
-        <nav>
+        <nav class="hide"> <!--!Ajout classe hide-->
             <a href="">MON AVATAR</a>
             <a href="">DOIS-JE L'ACHETER ?</a>
             <a href="">MAGASIN</a>
@@ -46,9 +46,9 @@
     <!--* Main-->
     <main>
 
-        <form method="post">
+        <form method="post" class="container" > <!--!Ajout classe container-->
             <!--{% if error %}-->
-                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                <div class="alert alert-danger"><!--{{ error.messageKey|trans(error.messageData, 'security') }}--></div>
             <!--{% endif %}-->
 
             <!--{% if app.user %}-->
@@ -61,24 +61,30 @@
             <div class="container containerConnexion">
                 <h2 class="titreConnexion">Se connecter</h2>
 
-                <label for="username">Pseudo</label>
-                <input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
+                <div class="infoUser"> <!-- !Ajout d'une div label+input-->
+                    <label for="username">Pseudo</label>
+                    <input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
+                </div>
 
-                <label for="password">Mot de passe</label>
-                <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
-                <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+                <div class="infoUser"> <!-- !Ajout d'une div label+input-->
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+                    <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+                </div>
 
 
-                <button class="boutonConnexion" type="submit">
+                <button class="boutonConnexion btn1" type="submit"> <!--! Ajout classe btn1-->
                     Se connecter
                 </button>
 
-                <p class="sousTexteConnexion">Pas encore de compte ? -
-                </p>
-                <a href="{{ path('app_register') }}">
-                    <p class="sousTexteConnexion">S'enregistrer
+                <div class="lienRegistration"><!-- !Ajout d'une div-->
+                    <p class="sousTexteConnexion">Pas encore de compte ? -
                     </p>
-                </a>
+                    <a href="{{ path('app_register') }}">
+                        <p class="sousTexteConnexion">S'enregistrer
+                        </p>
+                    </a>
+                </div>
             </div>
         </form>
 

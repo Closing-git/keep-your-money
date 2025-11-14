@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--lien CSS global :-->
     <link rel="stylesheet" href="../../StyleCSS/global.css">
-    <link rel="stylesheet" href="../../StyleCSS/shop1.css">
+    <link rel="stylesheet" href="../../StyleCSS/registration.css">
     <!--lien Fontawesome :-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--Fonts :-->
@@ -13,7 +13,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
-    <title>Magasin | Save it !</title>
+    <title>S'enregistrer | Save it !</title>
 </head>
 <body>
 
@@ -23,7 +23,7 @@
             <h1>SAVE IT !</h1>
         </div>
 
-        <nav>
+        <nav class="hide"> <!--!Ajout classe hide-->
             <a href="">MON AVATAR</a>
             <a href="">DOIS-JE L'ACHETER ?</a>
             <a class="navPage" href="">MAGASIN</a>
@@ -52,24 +52,55 @@
     <!-- {% endblock %} -->
 
     <!-- {% block body %} -->
-        <div class="containerConnexion">
+        <div class="container containerConnexion"> <!--!Ajout classe container-->
             <h2 class="titreConnexion">S'enregistrer</h2>
 
-            <!-- {{ form_errors(registrationForm) }} -->
+            {{ form_errors(registrationForm) }}
 
-            <!-- {{ form_start(registrationForm) }} -->
-            <!-- {{ form_row(registrationForm.username) }} -->
-            <!-- {{ form_row(registrationForm.plainPassword, { -->
-                <!-- label: 'Mot de passe' -->
-            <!-- }) }} -->
+            {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.username) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Mot de passe'
+            }) }}
 
-            <button class="boutonConnexion" type="submit">S'enregistrer</button>
+            <!-- !Ajout de quatre div label+input POUR L'EXEMPLE pcq il n'y avait pas encore d'inputs dans la page-->
+            <div class="infoUser"> 
+                    <label for="username">Pseudo</label>
+                    <input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
+            </div>
+
+             <div class="infoUser">
+                    <label for="username">Adresse mail</label>
+                    <input type="mail" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
+            </div>
+
+            <div class="infoUser">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+                    <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+            </div>
+
+             <div class="infoUser">
+                    <label for="username">Pseudo</label>
+                    <input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
+            </div>
+
+             <div class="infoUser">
+                    <label for="username">Pseudo</label>
+                    <input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
+            </div>
+
+
+            <button class="boutonConnexion btn1" type="submit">S'enregistrer</button> <!--! Ajout classe btn1-->
             {{ form_end(registrationForm) }}
-            <p class="sousTexteConnexion">Déjà un compte ? -</p>
-            <a href="{{ path('app_login') }}">
-                <p class="sousTexteConnexion">Se connecter
-                </p>
-            </a>
+
+            <div class="lienRegistration"><!-- !Ajout d'une div-->
+                <p class="sousTexteConnexion">Déjà un compte ? -</p>
+                <a href="{{ path('app_login') }}">
+                    <p class="sousTexteConnexion">Se connecter
+                    </p>
+                </a>
+            </div>
         </div>
     <!-- {% endblock %} -->
     </main>
