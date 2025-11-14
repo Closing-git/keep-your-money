@@ -1,0 +1,125 @@
+/* QUIZ PANELS */
+.quiz-panel {
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+#q-choix {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    text-align: center;
+    width: 100%;
+    margin: auto;
+
+}
+
+#q-choix button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+}
+
+/* Caro tu en pense quoi????? */
+.quiz-panel h2 {
+    font-family: 'Chewy', cursive;
+    font-size: 2rem;
+    color: var(--vert-foret-btn1-btn4);
+}
+
+.quiz-panel p {
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.quiz-panel ul.quiz-reasons {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    text-align: left;
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.quiz-panel .quiz-links {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin: 15px;
+    justify-content: center;
+}
+
+.quiz-panel .quiz-links a {
+    color: var(--vert-foret-btn1-btn4);
+    border: 2px solid var(--vert-foret-border);
+    border-radius: 0.6rem;
+    padding: 0.5rem 1rem;
+    transition: all 0.25s ease;
+}
+
+.quiz-panel .quiz-links a:hover {
+    background-color: var(--vert-foret-btn1-btn4);
+    color: white;
+}
+
+/* BOUTONS QUIZ */
+.quiz-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin: auto;
+    max-width: 350px;
+}
+
+.quiz-buttons button {
+    width: 100%;
+    margin: auto;
+    margin:5px;
+    padding: 0.8rem 0;
+    font-size: 1rem;
+}
+
+/* POPUP */
+.popup.quiz {
+    display: none;
+    background-color: var(--vert-ultraclair-panneau);
+    border: 2px solid var(--vert-pomme-border);
+    border-radius: 2rem;
+    padding: 2rem;
+    box-shadow: var(--shadow-section);
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+
+/* ÉTATS */
+.confHide {
+    display: none;
+}
+
+.itemPossede {
+    opacity: 0.7;
+}
+
+
+button {
+    cursor: pointer;
+}
