@@ -44,6 +44,95 @@ $fondsPossedes = array_filter($fonds, function($fond) use ($idsPossedes) {
     }
     return false;
 });
+
+ $haut= array_filter($accessoires, fn($a) => $a->getTypeAccessoire() === 'haut');
+
+       
+$hautPossedes = array_filter($haut, function($haut) use ($idsPossedes) {
+    foreach ($idsPossedes as $idPossede) {
+        if ($haut->getId() === $idPossede) {
+            return true;
+        }
+    }
+    return false;
+});
+ $bas= array_filter($accessoires, fn($a) => $a->getTypeAccessoire() === 'bas');
+
+       
+$basPossedes = array_filter($bas, function($bas) use ($idsPossedes) {
+    foreach ($idsPossedes as $idPossede) {
+        if ($bas->getId() === $idPossede) {
+            return true;
+        }
+    }
+    return false;
+});
+ $chaussures= array_filter($accessoires, fn($a) => $a->getTypeAccessoire() === 'chaussure');
+
+       
+$chaussuresPossedes = array_filter($chaussures, function($chaussure) use ($idsPossedes) {
+    foreach ($idsPossedes as $idPossede) {
+        if ($chaussure->getId() === $idPossede) {
+            return true;
+        }
+    }
+    return false;
+});
+ $tete= array_filter($accessoires, fn($a) => $a->getTypeAccessoire() === 'tete');
+
+       
+$tetePossedes = array_filter($tete, function($tete) use ($idsPossedes) {
+    foreach ($idsPossedes as $idPossede) {
+        if ($tete->getId() === $idPossede) {
+            return true;
+        }
+    }
+    return false;
+});
+ $accessoireMainDroite= array_filter($accessoires, fn($a) => $a->getTypeAccessoire() === 'accessoireMainDroite');
+
+       
+$accessoireMainDroitePossedes = array_filter($accessoireMainDroite, function($accessoireMainDroite) use ($idsPossedes) {
+    foreach ($idsPossedes as $idPossede) {
+        if ($accessoireMainDroite->getId() === $idPossede) {
+            return true;
+        }
+    }
+    return false;
+});
+ $accessoireMainGauche= array_filter($accessoires, fn($a) => $a->getTypeAccessoire() === 'accessoireMainGauche');
+
+       
+$accessoireMainGauchePossedes = array_filter($accessoireMainGauche, function($accessoireMainGauche) use ($idsPossedes) {
+    foreach ($idsPossedes as $idPossede) {
+        if ($accessoireMainGauche->getId() === $idPossede) {
+            return true;
+        }
+    }
+    return false;
+});
+ $animal= array_filter($accessoires, fn($a) => $a->getTypeAccessoire() === 'animal');
+
+       
+$animalPossedes = array_filter($animal, function($animal) use ($idsPossedes) {
+    foreach ($idsPossedes as $idPossede) {
+        if ($animal->getId() === $idPossede) {
+            return true;
+        }
+    }
+    return false;
+});
+ $filtre= array_filter($accessoires, fn($a) => $a->getTypeAccessoire() === 'filtre');
+
+       
+$filtrePossedes = array_filter($filtre, function($filtre) use ($idsPossedes) {
+    foreach ($idsPossedes as $idPossede) {
+        if ($filtre->getId() === $idPossede) {
+            return true;
+        }
+    }
+    return false;
+});
     
         //Récupérer la tenue de l'utilisateur
         $tenuePortee = $utilisateur->getTenuePortee();
