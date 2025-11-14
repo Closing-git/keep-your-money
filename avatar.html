@@ -4,54 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--lien CSS global :-->
-    <link rel="stylesheet" href="../../StyleCSS/global.css">
-    <link rel="stylesheet" href="../">
-    <title>Mon avatar | Save it ! </title>
+    <link rel="stylesheet" href="StyleCSS/global.css">
+    <link rel="stylesheet" href="StyleCSS/avatar.css">
+    <!--lien Fontawesome :-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--Fonts :-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <title>Mon avatar | Save it !</title>
 </head>
 <body>
-    <div>
-        <h4>SAVE IT !</h4>
+    <header>
+        <div class="logo-titre">
+            <img src="../../Images/logo.png" alt="Logo du site">
+            <h1>SAVE IT !</h1>
+        </div>
+
         <nav>
-            <a href="#">MON AVATAR</a>
-            <a href="#">DOIS JE L'ACHETER ? </a>
-            <a href="#">MAGASIN</a>
-            <a href="#">ComptePiece</a>
-            <a href="#">user</a>
+            <a href="">MON AVATAR</a>
+            <a href="">DOIS-JE L'ACHETER ?</a>
+            <a class="navPage" href="">MAGASIN</a>
         </nav>
-    </div>
-    <div class="titre-container"> <!--COL-->
-        <h2>MA GARDE ROBE</h2>
-        <div class="gardeRobe-avatar"> <!--ROW-->
-            <div class="container gardeRobe"> <!-- = .container choixItems-scroll-->
-                <div class="tete categorieItems">
-                    <h5>Fonds</h5>
-                    
-                </div>
-                <div class="tete categorieItems">
-                    <h5>T-shirt</h5>
-                    
-                </div>
-                <div class="tete categorieItems">
-                    <h5>Pantalons</h5>
-                    
-                </div>
-                <div class="tete categorieItems">
-                    <h5>Chapeaux</h5>
-                   
-                </div>
-                <div class="tete categorieItems">
-                    <h5>Accessoires</h5>
-                    
-                </div>
+
+        <div class="connexion-pseudo-money">
+            <div class="money-pseudo">
+                <p id="porteMonnaie" class="porteMonnaie">🪙 </p>
+                <p id="pseudo">User</p>
             </div>
             
+            <button class="iconeLogout" id="iconeLogout">
+                <i class="fa-solid fa-user"></i> <!--!Pouquoi l'icone ne se met pas en 2rem ?-->
+            </button>
+
+            <button class="btnLogout hide show"  id="btnLogout">Déconnexion</button>
         </div>
-        <div class="ContainerAvatar">
-        <div class="zoneAvatar">
-            <button type="submit" id="Réinitialiser" class="btn1">Réinitialiser</button>
-            <button type="submit" id="Sauvegarder" class="btn1">Sauvegarder la tenue</button>
+    </header>
+
+    <main>
+        <div>
+            <h4>SAVE IT !</h4>
+            <nav>
+                <a href="#">MON AVATAR</a>
+                <a href="#">DOIS JE L'ACHETER ? </a>
+                <a href="#">MAGASIN</a>
+                <a href="#">ComptePiece</a>
+                <a href="#">user</a>
+            </nav>
         </div>
-    </div>
-    </div>
+        <div class="titre-container"> <!--COL-->
+            <h2>MA GARDE ROBE</h2>
+            <div class="gardeRobe-avatar"> <!--ROW-->
+                <div class="container gardeRobe"> <!-- = .container choixItems-scroll-->
+                    <div class="tete categorieItems">
+                        <h5>Fonds</h5>
+                        
+                    </div>
+                    <div class="tete categorieItems">
+                        <h5>T-shirt</h5>
+                        
+                    </div>
+                    <div class="tete categorieItems">
+                        <h5>Pantalons</h5>
+                        
+                    </div>
+                    <div class="tete categorieItems">
+                        <h5>Chapeaux</h5>
+                    
+                    </div>
+                    <div class="tete categorieItems">
+                        <h5>Accessoires</h5>
+                        
+                    </div>
+                </div>
+                <div class="ContainerAvatar">
+                    <div class="zoneAvatar">
+                        <img src="Images/fond-base.png" class="fond">
+                        <img src="Images/Avatar-2.png" class="avatar">
+                        <div class="boutonsReinitSauve">
+                            <button type="submit" id="Réinitialiser" class="btn1">Réinitialiser</button>
+                            <button type="submit" id="Sauvegarder" class="btn1">Sauvegarder la tenue</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p class="credits">Ce site a été créé par :</p>
+        <div class="nomsCredits">
+            <p>Chloé Fersing,</p>
+            <p>Lisa Poinambalom,</p>
+            <p>Sam Fievez,</p>
+            <p>Stephanie Vancauwenberghe,</p>
+            <p>Caroline Poveda,</p>
+            <p>Charlotte Sadowczyk</p>
+        </div>
+    </footer>
+    
 </body>
 </html>
