@@ -134,7 +134,7 @@ header {
                 display:none; /* OU visibility:hidden ?*/
         }
 
-        /*.show {
+        .show {
             display:flex;
             position: absolute;
             bottom: -2.1rem;
@@ -143,7 +143,7 @@ header {
 
         .show:hover {
             font-weight: bold;
-        }*/
+        }
 
     }
 }

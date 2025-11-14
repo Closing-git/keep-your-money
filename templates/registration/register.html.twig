@@ -3,7 +3,12 @@
 {% block title %}S'enregistrer
 {% endblock %}
 
+{% block styles %}
+	<link rel="stylesheet" href="{{ asset('/styles/registration.css') }}">
+{% endblock %}
+
 {% block body %}
+<main>
 	<div class="containerConnexion">
 		<h2 class="titreConnexion">S'enregistrer</h2>
 
@@ -23,4 +28,5 @@
 			</p>
 		</a>
 	</div>
+	</main>
 {% endblock %}

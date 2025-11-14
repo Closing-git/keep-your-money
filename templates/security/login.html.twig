@@ -3,7 +3,12 @@
 {% block title %}Connexion
 {% endblock %}
 
+{% block styles %}
+	<link rel="stylesheet" href="{{ asset('/styles/login.css') }}">
+{% endblock %}
+
 {% block body %}
+<main>
 	<form method="post">
 		{% if error %}
 			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -36,4 +41,4 @@
 				</p>
 			</a>
 	</div>
-{% endblock %}
+</main>{% endblock %}
