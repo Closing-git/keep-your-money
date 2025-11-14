@@ -9,24 +9,34 @@
 
 {% block body %}
 <main>
-	<div class="containerConnexion">
-		<h2 class="titreConnexion">S'enregistrer</h2>
 
-		{{ form_errors(registrationForm) }}
+			<div
+			class="container containerConnexion"> <!--!Ajout classe container-->
+			<h2 class="titreConnexion">S'enregistrer</h2>
 
-		{{ form_start(registrationForm) }}
-		{{ form_row(registrationForm.username) }}
-		{{ form_row(registrationForm.plainPassword, {
-            label: 'Mot de passe'
-        }) }}
+			{{ form_errors(registrationForm) }}
 
-		<button class="boutonConnexion" type="submit">S'enregistrer</button>
-		{{ form_end(registrationForm) }}
-		<p class="sousTexteConnexion">Déjà un compte ? -</p>
-		<a href="{{ path('app_login') }}">
-			<p class="sousTexteConnexion">Se connecter
-			</p>
-		</a>
-	</div>
+			{{ form_start(registrationForm) }}
+			{{ form_row(registrationForm.username) }}
+			{{ form_row(registrationForm.plainPassword, {
+                label: 'Mot de passe'
+            }) }}
+
+<div class='boutonConnexion'>
+			<button class="boutonConnexion btn1" type="submit">S'enregistrer</button>
+			<!--! Ajout classe btn1-->
+			{{ form_end(registrationForm) }}
+</div>
+
+			<div
+				class="lienRegistration">
+				<!-- !Ajout d'une div-->
+				<p class="sousTexteConnexion">Déjà un compte ? -</p>
+				<a href="{{ path('app_login') }}">
+					<p class="sousTexteConnexion">Se connecter
+					</p>
+				</a>
+			</div>
+		</div>
 	</main>
 {% endblock %}
