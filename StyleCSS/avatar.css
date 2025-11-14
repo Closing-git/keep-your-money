@@ -41,7 +41,7 @@
         width:70%;
         display: flex;            /* aligne les enfants sur une ligne */
         justify-content: flex-start;
-        gap: 2rem;                /* espace entre zoneAvatar et gardeRobe */
+        gap: 2rem;                /* espace entre zoneAvatar et gardeRobe */       
 
 
         .zoneAvatar {
@@ -55,10 +55,14 @@
             overflow: hidden;   /* Empêche le débordement */
 
             
+
+            
             .fond {
                 width: 100%;
                 height: 100%;
                 object-fit: contain;
+                display: block;    
+                position: absolute; 
             }
 
             .avatar {
@@ -76,14 +80,13 @@
                 bottom: 10px;
                 left: 20px;
                 right: 20px;
-                display: flex;
-                gap: 1rem;
                 z-index: 10;
                 display:flex;
                 flex-direction: row;
                 justify-content: space-between;
-
-
+                z-index: 15;
+                padding-left: 80px;
+                padding-right:80x;
             }
 
             /*.boutonsReinitSauve {
