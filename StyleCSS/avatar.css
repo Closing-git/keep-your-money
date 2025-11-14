@@ -24,7 +24,7 @@
 
         .gardRobe {
             width: 200px;
-            height: 400px;
+            height: 600px;
             overflow-y: auto;
 
             .categorieItems {
@@ -38,36 +38,68 @@
     }
 
     .ContainerAvatar {
-    
-        position: absolute;       /* nécessaire pour top/left */
-        top: 174px;
-        left: 470px; 
+        width:70%;
         display: flex;            /* aligne les enfants sur une ligne */
         justify-content: flex-start;
-        gap: 20px;                /* espace entre zoneAvatar et gardeRobe */
+        gap: 2rem;                /* espace entre zoneAvatar et gardeRobe */       
+
 
         .zoneAvatar {
-    
+            display:flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
             width: 1000px;
             height: 600px;
-    
-            .zoneAvatar #Réinitialiser {
-                position: absolute;       
-                bottom: 20px;    
-                left: 150px;          
-            }
-            .zoneAvatar #Sauvegarder {
-                position: absolute;       
-                bottom: 20px;   
-                right: 150px;           
-            }
+            position: relative; /* Important pour positionner les boutons */
+            overflow: hidden;   /* Empêche le débordement */
+
             
-            .zoneAvatar img {
+
+            
+            .fond {
                 width: 100%;
                 height: 100%;
                 object-fit: contain;
-                 
+                display: block;    
+                position: absolute; 
             }
+
+            .avatar {
+                position: absolute;
+                bottom:35px;
+                right:60px;
+                z-index: 10;
+                width:80%;
+            }
+
+
+
+            .boutonsReinitSauve {
+                position: absolute;
+                bottom: 10px;
+                left: 20px;
+                right: 20px;
+                z-index: 10;
+                display:flex;
+                flex-direction: row;
+                justify-content: space-between;
+                z-index: 15;
+                
+            }
+
+            /*.boutonsReinitSauve {
+                .zoneAvatar #Réinitialiser {
+                    position: absolute;       
+                    bottom: 20px;    
+                    left: 150px;          
+                }
+                .zoneAvatar #Sauvegarder {
+                    position: absolute;       
+                    bottom: 20px;   
+                    right: 150px;           
+                }
+            }*/
         }
     }
     
