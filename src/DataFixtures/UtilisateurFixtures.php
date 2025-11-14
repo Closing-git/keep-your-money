@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Accessoire;
 use App\Entity\Utilisateur;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -28,6 +29,10 @@ class UtilisateurFixtures extends Fixture
                 'mdp' . $i
             ));
             $user->setArgentPossede(random_int(0, 600));
+            $fondBase = $manager->getRepository(Accessoire::class)->findOneBy([
+                'nomAccessoire' => 'Nature'
+            ]);
+            $user->addPossession($fondBase);
             $manager->persist($user);
         }
         $manager->flush();
