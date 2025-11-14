@@ -131,7 +131,7 @@ header {
 
         }
         .hide {
-                display:none; /* OU visibility:hidden ?*/
+                display:none !important; /* OU visibility:hidden ?*/
         }
 
         .show {

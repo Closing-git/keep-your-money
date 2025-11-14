@@ -532,7 +532,7 @@ function onFinalChoice(aAchete)
     if (!aAchete)
     {
         spanArgentEvite.textContent = prixChoisi || "ce montant";
-        spanJetons.textContent      = currentJetons + " 🪙";
+        spanJetons.textContent      = currentJetons ;
         spanTotalArgent.textContent = currentJetons + " 🪙";
 
         showSection("bravo");
