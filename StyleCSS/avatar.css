@@ -1,0 +1,39 @@
+.choixItems-scroll {
+
+    overflow-y: auto;
+}
+
+.titre-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap:1rem;
+    height:80%;
+
+    h2 {
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+    .choixItems-avatar {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap:1rem;
+
+        .choixItems-scroll {
+            max-height:600px;
+            overflow-y: auto;
+
+            .categorieItems {
+                display:flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: space-between;
+                gap:1rem;
+            }
+        }
+    }
+}
