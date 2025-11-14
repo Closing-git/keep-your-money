@@ -36,29 +36,68 @@
         </div>
         <div>
             <h5>T-shirt</h5>
-            <a href="#">T-shirt 1</a>
-            <a href="#">T-shirt 2</a>
-            <a href="#">T-shirt 3</a>
+           {% for haut in accessoiresPossedes %}
+				{% if haut.typeAccessoire == 'haut' %}
+					<a href="#" data-image="{{ asset('images/' ~ haut.visuelAccessoire) }}">{{ haut.nomAccessoire }}</a>
+				{% endif %}
+			{% endfor %}
         </div>
          <div>
             <h5>Pantalons</h5>
-            <a href="#">Pantalon 1</a>
-            <a href="#">Pantalon 2</a>
-            <a href="#">Pantalon 3</a>
+            {% for bas in accessoiresPossedes %}
+				{% if bas.typeAccessoire == 'bas' %}
+					<a href="#" data-image="{{ asset('images/' ~ bas.visuelAccessoire) }}">{{ bas.nomAccessoire }}</a>
+				{% endif %}
+			{% endfor %}
         </div>
          <div>
             <h5>Chapeaux</h5>
-            <a href="#">Chapeau 1</a>
-            <a href="#">Chapeau 2</a>
-            <a href="#">Chapeau 3</a>
+          {% for tete in accessoiresPossedes %}
+				{% if tete.typeAccessoire == 'tete' %}
+					<a href="#" data-image="{{ asset('images/' ~ tete.visuelAccessoire) }}">{{ tete.nomAccessoire }}</a>
+				{% endif %}
+			{% endfor %}
         </div>
         <div>
-            <h5>Accessoires</h5>
-            <a href="#">Accessoire 1</a>
-            <a href="#">Accessoire 2</a>
-            <a href="#">Accessoire 3</a>
+            <h5>Accessoires main droite</h5>
+           {% for mainDroite in accessoiresPossedes %}
+				{% if mainDroite.typeAccessoire == 'accessoireMainDroite' %}
+					<a href="#" data-image="{{ asset('images/' ~ mainDroite.visuelAccessoire) }}">{{ mainDroite.nomAccessoire }}</a>
+				{% endif %}
+			{% endfor %}
         </div>
-       
+		 <div>
+            <h5>Accessoires main gauche</h5>
+           {% for mainGauche in accessoiresPossedes %}
+				{% if mainGauche.typeAccessoire == 'accessoireMainGauche' %}
+					<a href="#" data-image="{{ asset('images/' ~ mainGauche.visuelAccessoire) }}">{{ mainGauche.nomAccessoire }}</a>
+				{% endif %}
+			{% endfor %}
+        </div>
+        <div>
+            <h5>Chaussures</h5>
+           {% for chaussure in accessoiresPossedes %}
+				{% if chaussure.typeAccessoire == 'chaussure' %}
+					<a href="#" data-image="{{ asset('images/' ~ chaussure.visuelAccessoire) }}">{{ chaussure.nomAccessoire }}</a>
+				{% endif %}
+			{% endfor %}
+        </div>
+        <div>
+            <h5>Filtres</h5>
+           {% for filtre in accessoiresPossedes %}
+				{% if filtre.typeAccessoire == 'filtre' %}
+					<a href="#" data-image="{{ asset('images/' ~ filtre.visuelAccessoire) }}">{{ filtre.nomAccessoire }}</a>
+				{% endif %}
+			{% endfor %}
+        </div>
+		<div>
+            <h5>Animal</h5>
+           {% for animal in accessoiresPossedes %}
+				{% if animal.typeAccessoire == 'animal' %}
+					<a href="#" data-image="{{ asset('images/' ~ animal.visuelAccessoire) }}">{{ animal.nomAccessoire }}</a>
+				{% endif %}
+			{% endfor %}
+        </div>
         </div>
 		<div class="ContainerAvatar">
         <div class="zoneAvatar">
