@@ -397,6 +397,7 @@ function showQuestionById(questionId)
     {
         const btn = document.createElement("button");
         btn.textContent = c.label;
+        btn.classList.add("btn1");
 
         btn.addEventListener("click", () =>
         {

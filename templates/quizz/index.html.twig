@@ -3,116 +3,143 @@
 {% block title %}Dois-je l'acheter ?
 {% endblock %}
 
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/quiz.css') }}">
+{% endblock %}
+
 {% block scripts %}
 	<script src="{{ asset('assets/qcm.js') }}"></script>
 {% endblock %}
 
 {% block body %}
+	<main>
+		<!-- Panneau vert principal -->
+		<div
+			class="container quiz-container">
 
-	<h1>Quiz : En as-tu vraiment besoin ?</h1>
+			<!-- Bouton universel de retour -->
+			<button id="btn-back" type="button" class="btn4">Retour</button>
+			<h1>Quiz : En as-tu vraiment besoin ?</h1>
 
-	<!-- Bouton universel de retour -->
-	<button id="btn-back" type="button">Retour</button>
+			<!-- 1) Choix des catégories -->
+			<!-- 1) Choix des catégories -->
+			<section id="items-list" class="quiz-panel">
+				<h2 id="choixTheme">Choisis un thème</h2>
 
-	<!-- 1) Choix des catégories -->
-	<section id="items-list">
-		<h2 id="choixTheme">Choisis un thème</h2>
+				<button type="button" data-cat="vetements">
+					<img src="{{ asset('images/Vetements.png') }}" alt="Vêtements">
+					<span>Vêtements</span>
+				</button>
 
-		<button type="button" data-cat="vetements">
-			<span>Vêtements</span>
-		</button>
-		<button type="button" data-cat="livres">
-			<span>Livres</span>
-		</button>
-		<button type="button" data-cat="jeux">
-			<span>Jeux-vidéo</span>
-		</button>
-		<button type="button" data-cat="meubles">
-			<span>Meubles</span>
-		</button>
-		<button type="button" data-cat="loisirs">
-			<span>Loisirs</span>
-		</button>
-	</section>
+				<button type="button" data-cat="livres">
+					<img src="{{ asset('images/Livres.png') }}" alt="Livres">
+					<span>Livres</span>
+				</button>
 
-	<!-- 2) Introduction de la catégorie -->
-	<section id="intro-qcm" hidden>
-		<h2 id="intro-titre"></h2>
-		<p id="intro-texte"></p>
+				<button type="button" data-cat="jeux">
+					<img src="{{ asset('images/Jeux.png') }}" alt="Jeux-vidéo">
+					<span>Jeux-vidéo</span>
+				</button>
 
-		<button id="btn-start" type="button">Répondre aux questions</button>
-		<button id="btn-change-cat" type="button">Changer de catégorie</button>
-	</section>
+				<button type="button" data-cat="meubles">
+					<img src="{{ asset('images/Meubles.png') }}" alt="Meubles">
+					<span>Meubles</span>
+				</button>
 
-	<!-- 3) Zone du QCM -->
-	<section id="quiz" hidden>
-		<h2 id="q-titre"></h2>
-		<div id="q-choix" class="zone-reponses"></div>
-	</section>
+				<button type="button" data-cat="loisirs">
+					<img src="{{ asset('images/Loisirs.png') }}" alt="Loisirs">
+					<span>Loisirs</span>
+				</button>
+			</section>
 
-	<!-- 4) Résultat / Conseil -->
-	<section
-		id="resultat" hidden class="quiz-panel">
+			<!-- 2) Introduction de la catégorie -->
+			<section id="intro-qcm" hidden class="quiz-panel">
+				<h2 id="intro-titre"></h2>
+				<p id="intro-texte"></p>
 
-		<!-- Titre dynamique -->
-		<h2 id="res-titre">Résultat</h2>
+				<div class="quiz-buttons">
+					<button id="btn-start" type="button" class="btn1">Répondre aux
+																														questions</button>
+					<button id="btn-change-cat" type="button" class="btn1">Changer de
+																														catégorie</button>
+				</div>
+			</section>
 
-		<!-- Texte dynamique -->
-		<p id="res-texte">Texte dynamique…</p>
+			<!-- 3) Zone du QCM -->
+			<section id="quiz" hidden class="quiz-panel">
+				<h2 id="q-titre"></h2>
 
-		<!-- Liens second main / location -->
-		<div class="quiz-links">
-			<a href="https://www.2ememain.be" target="_blank">2ememain.be</a>
-			<a href="https://www.pret-a-louer.be" target="_blank">pret-a-louer.be</a>
-			<a href="https://www.tournevie.be" target="_blank">tournevie.be</a>
-		</div>
+				<!-- boutons créés en JS -->
+				<div id="q-choix" class="zone-reponses quiz-buttons"></div>
+			</section>
+			<!-- 4) Résultat / Conseil -->
+			<section
+				id="resultat" hidden class="quiz-panel">
 
-		<!-- Boutons principaux (dynamique selon positif / négatif) -->
-		<div class="quiz-buttons" id="res-actions">
-			<button class="btn1" id="btn-res-no">JE NE L’ACHÈTE PAS</button>
-			<button class="btn1" id="btn-res-yes">Je l’achète malgré vos conseils</button>
-		</div>
+				<!-- Titre dynamique -->
+				<h2 id="res-titre">Résultat</h2>
 
-		<!-- Popup de confirmation -->
-		<div class="popup quiz" id="popup-confirm" hidden>
-			<h1>Tu es sûr·e ?</h1>
-			<ul class="quiz-reasons">
-				<li>Tu vas dépenser de l'argent et manquer une occasion d'en gagner dans le jeu...</li>
-			</ul>
-			<div class="quiz-buttons">
-				<button class="btn4" id="popup-no">Non, vous avez raison...</button>
-				<button class="btn4" id="popup-yes">Oui, tant pis pour moi...</button>
-			</div>
-		</div>
+				<!-- Texte dynamique -->
+				<p id="res-texte">Texte dynamique…</p>
 
-	</section>
+				<!-- Liens second main / location -->
+				<div class="quiz-links">
+					<a href="https://www.2ememain.be" target="_blank">2ememain.be</a>
+					<a href="https://www.pret-a-louer.be" target="_blank">pret-a-louer.be</a>
+					<a href="https://www.tournevie.be" target="_blank">tournevie.be</a>
+				</div>
 
-	<!-- 5) Écran BRAVO ! -->
-	<section class="quiz-panel" id="quiz-bravo" hidden>
-		<h2>BRAVO !</h2>
+				<!-- Boutons principaux (dynamique selon positif / négatif) -->
+				<div class="quiz-buttons" id="res-actions">
+					<button class="btn1" id="btn-res-no">JE NE L’ACHÈTE PAS</button>
+					<button class="btn1" id="btn-res-yes">Je l’achète malgré vos conseils</button>
+				</div>
 
-		<p>Tu as résisté et évité de dépenser :
-			<span id="argentEvite">xx €</span>
-		</p>
-		<p>En plus tu vas gagné
-			<span id="jetonsGagnes">100
-			</span>
-			<span>🪙</span>
-		</p>
+				<!-- Popup de confirmation -->
+				<div class="popup quiz" id="popup-confirm" hidden>
+					<h1>Tu es sûr·e ?</h1>
+					<ul class="quiz-reasons">
+						<li>Tu vas dépenser de l'argent et manquer une occasion d'en gagner dans
+																												le jeu...</li>
+					</ul>
+					<div class="quiz-buttons">
+						<button class="btn4" id="popup-no">Non, vous avez raison...</button>
+						<button class="btn4" id="popup-yes">Oui, tant pis pour moi...</button>
+					</div>
+				</div>
+
+			</section>
+
+			<!-- 5) Écran BRAVO ! -->
+			<section class="quiz-panel" id="quiz-bravo" hidden>
+				<h2>BRAVO !</h2>
+
+				<p>Tu as résisté et évité de dépenser :
+					<span id="argentEvite">xx €</span>
+				</p>
+				<p>En plus tu vas gagné
+					<span id="jetonsGagnes">100
+					</span>
+					<span>🪙</span>
+				</p>
 
 
-		<div class="quiz-buttons">
-			<form method="post" action="{{ path('app_quizz') }}" id="formGain">
-				<input type="hidden" name="jetonsGagnes" id="inputJetonsGagnes" value="0">
-				<input type="hidden" name="action" value="gains">
-				<button type="button" class="btn1" id="btnValiderGains">Récupérer mes 🪙</button>
-				<button class="btn1" id="voirAvatar">Voir mon avatar</button>
-				<button class="btn1" id="allerMagasin">Aller au magasin</button>
-				<button class="btn1" id="refaireQuiz">Refaire le quiz pour un autre objet ?</button>
-			</div>
-		</section>
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
+				<div class="quiz-buttons">
+					<form method="post" action="{{ path('app_quizz') }}" id="formGain">
+						<input type="hidden" name="jetonsGagnes" id="inputJetonsGagnes" value="0">
+						<input type="hidden" name="action" value="gains">
+						<button type="button" class="btn1" id="btnValiderGains">Récupérer mes 🪙</button>
+						<button class="btn1" id="voirAvatar">Voir mon avatar</button>
+						<button class="btn1" id="allerMagasin">Aller au magasin</button>
+						<button class="btn1" id="refaireQuiz">Refaire le quiz pour un autre objet ?</button>
+					</div>
+				</section>
+
+			</main>
+
+			<!-- SCRIPT pour récupérer le montant d'argent gagné -->
+			<script>
+				document.addEventListener('DOMContentLoaded', function () {
 const btnValider = document.getElementById('btnValiderGains');
 if (btnValider) {
 btnValider.addEventListener('click', function () {
@@ -122,6 +149,6 @@ document.getElementById('formGain').submit();
 });
 }
 });
-		</script>
-	</body>
-{% endblock %}
+			</script>
+		</body>
+	{% endblock %}
