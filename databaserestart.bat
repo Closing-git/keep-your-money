@@ -10,7 +10,8 @@ del migrations\Ve*
 @REM Génère une migration
 symfony console make:migration --no-interaction
 @REM Exécute les migrations
-symfony console doctrine:migrations:migrate --no-interaction
+
+ --no-interaction
 @REM Charge les Fixtures
 symfony console doctrine:fixtures:load --no-interaction
 

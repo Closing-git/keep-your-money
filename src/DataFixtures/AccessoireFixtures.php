@@ -194,7 +194,7 @@ class AccessoireFixtures extends Fixture
         $fondPlage = new Accessoire();
         $fondPlage->setNomAccessoire("Plage");
         $fondPlage->setTypeAccessoire("fond");
-        $fondPlage->setPrixAccessoire(0);
+        $fondPlage->setPrixAccessoire(random_int(1, 150));
         $fondPlage->setVisuelAccessoire("fond-plage.png");
 
         $manager->persist($fondPlage);
