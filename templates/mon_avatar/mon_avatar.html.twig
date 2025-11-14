@@ -2,114 +2,110 @@
 
 {% block title %}Mon avatar
 {% endblock %}
-{% block stylesheets %}
-     
+{% block styles %}
+	<link rel="stylesheet" href="{{ asset('/styles/avatar.css') }}">
+
 {% endblock %}
 {% block body %}
- 	<link rel="stylesheet" href="{{ asset('/StyleCSS/monavatar.css') }}">
-	<script src="{{ asset('/script/avatar.js') }}"defer></script>
+	<main>
+		<script src="{{ asset('/script/avatar.js') }}" defer></script>
 
-	<div>
-		<h1>mon avatar</h1>
-		Connecté en tant que :
-		{{ utilisateur.username }}
-		<a href="{{ path('app_logout') }}">Déconnexion</a>
-	</div>
-	<nav>
-		<ul>
-			<li><a href="{{ path('app_shop') }}">Magasin</a></li>
-			<li><a href="{{ path('app_mon_avatar') }}">Mon avatar</a></li>
-            <li><a href="{{ path('app_quizz') }}">Questionnaire</a></li>
-		</ul>
-	</nav>
-	 </div>
-    <h2>MA GARDE ROBE</h2>
-    <div class="gardeRobe">
-        <div>
-            <h5>Fonds</h5>
-            <a href="#" data-image="{{ asset('images/fond-base.png') }}">Fond de base</a>
-            {% for fond in fondsPossedes %}
-                  <a href="#" data-image="{{ asset('images/' ~ fond.visuelAccessoire) }}">{{ fond.nomAccessoire }}</a>
-            {% endfor %}
-            
+		<div
+			class="titre-container">
+			<!--COL-->
+			<h2>MA GARDE ROBE</h2>
+			<div class="gardeRobe-avatar">
+				<div class="container gardeRobe">
 
-        </div>
-        <div>
-            <h5>T-shirt</h5>
-           {% for haut in accessoiresPossedes %}
-				{% if haut.typeAccessoire == 'haut' %}
-					<a href="#" data-image="{{ asset('images/' ~ haut.visuelAccessoire) }}">{{ haut.nomAccessoire }}</a>
-				{% endif %}
-			{% endfor %}
-        </div>
-         <div>
-            <h5>Pantalons</h5>
-            {% for bas in accessoiresPossedes %}
-				{% if bas.typeAccessoire == 'bas' %}
-					<a href="#" data-image="{{ asset('images/' ~ bas.visuelAccessoire) }}">{{ bas.nomAccessoire }}</a>
-				{% endif %}
-			{% endfor %}
-        </div>
-         <div>
-            <h5>Chapeaux</h5>
-          {% for tete in accessoiresPossedes %}
-				{% if tete.typeAccessoire == 'tete' %}
-					<a href="#" data-image="{{ asset('images/' ~ tete.visuelAccessoire) }}">{{ tete.nomAccessoire }}</a>
-				{% endif %}
-			{% endfor %}
-        </div>
-        <div>
-            <h5>Accessoires main droite</h5>
-           {% for mainDroite in accessoiresPossedes %}
-				{% if mainDroite.typeAccessoire == 'accessoireMainDroite' %}
-					<a href="#" data-image="{{ asset('images/' ~ mainDroite.visuelAccessoire) }}">{{ mainDroite.nomAccessoire }}</a>
-				{% endif %}
-			{% endfor %}
-        </div>
-		 <div>
-            <h5>Accessoires main gauche</h5>
-           {% for mainGauche in accessoiresPossedes %}
-				{% if mainGauche.typeAccessoire == 'accessoireMainGauche' %}
-					<a href="#" data-image="{{ asset('images/' ~ mainGauche.visuelAccessoire) }}">{{ mainGauche.nomAccessoire }}</a>
-				{% endif %}
-			{% endfor %}
-        </div>
-        <div>
-            <h5>Chaussures</h5>
-           {% for chaussure in accessoiresPossedes %}
-				{% if chaussure.typeAccessoire == 'chaussure' %}
-					<a href="#" data-image="{{ asset('images/' ~ chaussure.visuelAccessoire) }}">{{ chaussure.nomAccessoire }}</a>
-				{% endif %}
-			{% endfor %}
-        </div>
-        <div>
-            <h5>Filtres</h5>
-           {% for filtre in accessoiresPossedes %}
-				{% if filtre.typeAccessoire == 'filtre' %}
-					<a href="#" data-image="{{ asset('images/' ~ filtre.visuelAccessoire) }}">{{ filtre.nomAccessoire }}</a>
-				{% endif %}
-			{% endfor %}
-        </div>
-		<div>
-            <h5>Animal</h5>
-           {% for animal in accessoiresPossedes %}
-				{% if animal.typeAccessoire == 'animal' %}
-					<a href="#" data-image="{{ asset('images/' ~ animal.visuelAccessoire) }}">{{ animal.nomAccessoire }}</a>
-				{% endif %}
-			{% endfor %}
-        </div>
-        </div>
-		<div class="ContainerAvatar">
-        <div class="zoneAvatar">
-			   <img  id="fond" class="layer" src="{{ asset('images/fond-base.png') }}" alt="fondDeBase">
+					<div class="categorieItems">
+						<h5>Fonds</h5>
+						<a href="#" data-image="{{ asset('images/fond-base.png') }}">Fond de base</a>
+						{% for fond in fondsPossedes %}
+							<a href="#" data-image="{{ asset('images/' ~ fond.visuelAccessoire) }}">{{ fond.nomAccessoire }}</a>
+						{% endfor %}
 
-			<img id="avatarfond" class="layer" src="{{ asset('images/avatar_neutre.png') }}">
-			<div id="accessoires-container"></div>
 
-			
-         
-            <button type="button" id="Réinitialiser">Réinitialiser</button>
-            <button type="button" id="Sauvegarder">Sauvegarder la tenue</button>
-        </div>
-		</div>
-{% endblock %}
+					</div>
+					<div class="categorieItems">
+						<h5>T-shirt</h5>
+						{% for haut in accessoiresPossedes %}
+							{% if haut.typeAccessoire == 'haut' %}
+								<a href="#" data-image="{{ asset('images/' ~ haut.visuelAccessoire) }}">{{ haut.nomAccessoire }}</a>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="categorieItems">
+						<h5>Pantalons</h5>
+						{% for bas in accessoiresPossedes %}
+							{% if bas.typeAccessoire == 'bas' %}
+								<a href="#" data-image="{{ asset('images/' ~ bas.visuelAccessoire) }}">{{ bas.nomAccessoire }}</a>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="categorieItems">
+						<h5>Chapeaux</h5>
+						{% for tete in accessoiresPossedes %}
+							{% if tete.typeAccessoire == 'tete' %}
+								<a href="#" data-image="{{ asset('images/' ~ tete.visuelAccessoire) }}">{{ tete.nomAccessoire }}</a>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="categorieItems">
+						<h5>Accessoires main droite</h5>
+						{% for mainDroite in accessoiresPossedes %}
+							{% if mainDroite.typeAccessoire == 'accessoireMainDroite' %}
+								<a href="#" data-image="{{ asset('images/' ~ mainDroite.visuelAccessoire) }}">{{ mainDroite.nomAccessoire }}</a>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="categorieItems">
+						<h5>Accessoires main gauche</h5>
+						{% for mainGauche in accessoiresPossedes %}
+							{% if mainGauche.typeAccessoire == 'accessoireMainGauche' %}
+								<a href="#" data-image="{{ asset('images/' ~ mainGauche.visuelAccessoire) }}">{{ mainGauche.nomAccessoire }}</a>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="categorieItems">
+						<h5>Chaussures</h5>
+						{% for chaussure in accessoiresPossedes %}
+							{% if chaussure.typeAccessoire == 'chaussure' %}
+								<a href="#" data-image="{{ asset('images/' ~ chaussure.visuelAccessoire) }}">{{ chaussure.nomAccessoire }}</a>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="categorieItems">
+						<h5>Filtres</h5>
+						{% for filtre in accessoiresPossedes %}
+							{% if filtre.typeAccessoire == 'filtre' %}
+								<a href="#" data-image="{{ asset('images/' ~ filtre.visuelAccessoire) }}">{{ filtre.nomAccessoire }}</a>
+							{% endif %}
+						{% endfor %}
+					</div>
+					<div class="categorieItems">
+						<h5>Animal</h5>
+						{% for animal in accessoiresPossedes %}
+							{% if animal.typeAccessoire == 'animal' %}
+								<a href="#" data-image="{{ asset('images/' ~ animal.visuelAccessoire) }}">{{ animal.nomAccessoire }}</a>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+
+				<div class="ContainerAvatar">
+					<div class="zoneAvatar">
+						<img id="fond" class="layer fond" src="{{ asset('images/fond-base.png') }}" alt="fondDeBase">
+
+						<img id="avatarfond" class="layer avatar" src="{{ asset('images/avatar_neutre.png') }}">
+						<div id="accessoires-container"></div>
+
+						<div class="boutonsReinitSauve">
+							<button type="button" class='btn1' id="Réinitialiser">Réinitialiser</button>
+							<button type="button" class='btn1' id="Sauvegarder">Sauvegarder la tenue</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</main>
+	{% endblock %}
