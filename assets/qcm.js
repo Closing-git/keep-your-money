@@ -537,11 +537,6 @@ function onFinalChoice(aAchete)
 
         showSection("bravo");
 
-        if (btnVoirAvatar)
-            btnVoirAvatar.onclick = () => alert("TODO: écran avatar");
-
-        if (btnAllerMagasin)
-            btnAllerMagasin.onclick = () => alert("TODO: écran magasin");
 
         if (btnRefaireQuiz)
             btnRefaireQuiz.onclick = () =>
