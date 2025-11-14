@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Save it </title>
+    <!--lien CSS global :-->
+    <link rel="stylesheet" href="../../StyleCSS/global.css">
+    <link rel="stylesheet" href="../">
+    <title>Mon avatar | Save it ! </title>
 </head>
 <body>
     <div>
@@ -16,43 +19,39 @@
             <a href="#">user</a>
         </nav>
     </div>
-    <h2>MA GARDE ROBE</h2>
-    <div class="gardeRobe">
-        <div>
-            <h5>Fonds</h5>
-            <a href="#">Fond 1</a>
-            <a href="#">Fond 2</a>
-            <a href="#"> Fond 3</a>
+    <div class="titre-container"> <!--COL-->
+        <h2>MA GARDE ROBE</h2>
+        <div class="gardeRobe-avatar"> <!--ROW-->
+            <div class="container gardeRobe"> <!-- = .container choixItems-scroll-->
+                <div class="tete categorieItems">
+                    <h5>Fonds</h5>
+                    
+                </div>
+                <div class="tete categorieItems">
+                    <h5>T-shirt</h5>
+                    
+                </div>
+                <div class="tete categorieItems">
+                    <h5>Pantalons</h5>
+                    
+                </div>
+                <div class="tete categorieItems">
+                    <h5>Chapeaux</h5>
+                   
+                </div>
+                <div class="tete categorieItems">
+                    <h5>Accessoires</h5>
+                    
+                </div>
+            </div>
+            
         </div>
-        <div>
-            <h5>T-shirt</h5>
-            <a href="#">T-shirt 1</a>
-            <a href="#">T-shirt 2</a>
-            <a href="#">T-shirt 3</a>
-        </div>
-         <div>
-            <h5>Pantalons</h5>
-            <a href="#">Pantalon 1</a>
-            <a href="#">Pantalon 2</a>
-            <a href="#">Pantalon 3</a>
-        </div>
-         <div>
-            <h5>Chapeaux</h5>
-            <a href="#">Chapeau 1</a>
-            <a href="#">Chapeau 2</a>
-            <a href="#">Chapeau 3</a>
-        </div>
-        <div>
-            <h5>Accessoires</h5>
-            <a href="#">Accessoire 1</a>
-            <a href="#">Accessoire 2</a>
-            <a href="#">Accessoire 3</a>
-        </div>
-       
-        </div>
+        <div class="ContainerAvatar">
         <div class="zoneAvatar">
-            <button type="submit" id="Réinitialiser">Réinitialiser</button>
-            <button type="submit" id="Sauvegarder">Sauvegarder la tenue</button>
+            <button type="submit" id="Réinitialiser" class="btn1">Réinitialiser</button>
+            <button type="submit" id="Sauvegarder" class="btn1">Sauvegarder la tenue</button>
         </div>
+    </div>
+    </div>
 </body>
 </html>
