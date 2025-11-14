@@ -8,37 +8,50 @@
 {% endblock %}
 
 {% block body %}
-<main>
-	<form method="post">
-		{% if error %}
-			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-		{% endif %}
+    <main>
 
-		{% if app.user %}
-			<div>
-				Vous êtes connecté en tant que
-				{{ app.user.userIdentifier }},
-				<a href="{{ path('app_logout') }}">Déconnexion</a>
-			</div>
-		{% endif %}
-		<div class="containerConnexion">
-			<h2 class="titreConnexion">Se connecter</h2>
-			<label for="username">Pseudo</label>
-			<input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
-			<label for="password">Mot de passe</label>
-			<input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
-			<input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+        <form method="post" > 
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div>
+                    Vous êtes connecté en tant que
+                    {{ app.user.userIdentifier }},
+                    <a href="{{ path('app_logout') }}">Déconnexion</a>
+                </div>
+            {% endif %}
+            <div class="container containerConnexion">
+                <h2 class="titreConnexion">Se connecter</h2>
+
+                <div class="infoUser"> <!-- !Ajout d'une div label+input-->
+                    <label for="username">Pseudo</label>
+                    <input type="text" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="username" required autofocus>
+                </div>
+
+                <div class="infoUser"> <!-- !Ajout d'une div label+input-->
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+                    <input type="hidden" name="_csrf_token" data-controller="csrf-protection" value="{{ csrf_token('authenticate') }}">
+                </div>
 
 
-			<button class="boutonConnexion" type="submit">
-				Se connecter
-			</button>
+                <button class="boutonConnexion btn1" type="submit"> <!--! Ajout classe btn1-->
+                    Se connecter
+                </button>
 
-			<p class="sousTexteConnexion">Pas encore de compte ? -
-			</p>
-			<a href="{{ path('app_register') }}">
-				<p class="sousTexteConnexion">S'enregistrer
-				</p>
-			</a>
-	</div>
+                <div class="lienRegistration"><!-- !Ajout d'une div-->
+                    <p class="sousTexteConnexion">Pas encore de compte ? -
+                    </p>
+                    <a href="{{ path('app_register') }}">
+                        <p class="sousTexteConnexion">S'enregistrer
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </form>
+
+    </main>
+
 </main>{% endblock %}

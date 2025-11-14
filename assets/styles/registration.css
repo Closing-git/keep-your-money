@@ -24,3 +24,10 @@
         gap:0.5rem;
     }
 }
+
+.boutonConnexion {
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+}
