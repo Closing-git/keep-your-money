@@ -101,7 +101,13 @@
         </div>
 		<div class="ContainerAvatar">
         <div class="zoneAvatar">
-            <img  id="avatar-fond" src="{{ asset('images/fond-base.png') }}" alt="fondDeBase">
+			   <img  id="fond" class="layer" src="{{ asset('images/fond-base.png') }}" alt="fondDeBase">
+
+			<img id="avatarfond" class="layer" src="{{ asset('images/avatar_neutre.png') }}">
+			<div id="accessoires-container"></div>
+
+			
+         
             <button type="button" id="Réinitialiser">Réinitialiser</button>
             <button type="button" id="Sauvegarder">Sauvegarder la tenue</button>
         </div>
