@@ -14,14 +14,11 @@
 		<!--Fonts :-->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> 
-		{% block styles %}{% endblock %}
-		{% block scripts %}{% endblock %}
+		<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"> {% block styles %}{% endblock %}{% block scripts %}{% endblock %}
 		<title>
 			{% block title %}Save it !
 			{% endblock %}
 		</title>
-
 		{% block javascripts %}
 			{% block importmap %}
 				{{ importmap('app') }}
@@ -50,14 +47,15 @@
 						</p>
 						<p id="pseudo">{{ app.user.username }}</p>
 					</div>
-					<i></i>
-					<button class="iconeLogout" id="iconeLogout">
-						<i class="fa-solid fa-user"></i>
-					</button>
 
-					<a href="{{ path('app_logout') }}">
-						<button class="btnLogout hide show" id="btnLogout">Déconnexion</button>
-					</a>
+					<div>
+						<i id="iconeLogout" class="fa-solid fa-user"></i>
+
+						<a href="{{ path('app_logout') }}">
+							<button class="btnLogout hide" id="btnLogout">Déconnexion</button>
+						</a>
+
+					</div>
 				</div>
 			</header>
 
