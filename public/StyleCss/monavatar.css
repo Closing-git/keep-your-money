@@ -1,0 +1,39 @@
+.ContainerAvatar {
+    
+    position: absolute;       /* nécessaire pour top/left */
+    top: 174px;
+    left: 470px; 
+    display: flex;            /* aligne les enfants sur une ligne */
+    justify-content: flex-start;
+    gap: 20px;                /* espace entre zoneAvatar et gardeRobe */
+}
+
+.zoneAvatar {
+    
+    width: 1000px;
+    height: 600px;
+   
+}
+.zoneAvatar #Réinitialiser {
+    position: absolute;       
+    bottom: 20px;    
+    left: 150px;          
+}
+.zoneAvatar #Sauvegarder {
+    position: absolute;       
+    bottom: 20px;   
+    right: 150px;           
+}
+
+.zoneAvatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+     
+}
+.gardeRobe {
+    background-color: rgb(50, 202, 23);
+    width: 200px;
+    height: 400px;
+}
+
