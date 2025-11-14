@@ -3,20 +3,69 @@
 {% block title %}Dois-je l'acheter ?
 {% endblock %}
 
+{% block scripts %}
+	<script src="{{ asset('assets/qcm.js') }}"></script>
+{% endblock %}
+
 {% block body %}
 
+	<h1>Quelle Catégorie d'objet souhaites-tu acheter ?</h1>
 
-	<div>
-		<h1>Quizz</h1>
-		Connecté en tant que :
-		{{ utilisateur.username }}
-		<a href="{{ path('app_logout') }}">Déconnexion</a>
-	</div>
-	<nav>
-		<ul>
-			<li><a href="{{ path('app_shop') }}">Magasin</a></li>
-			<li><a href="{{ path('app_mon_avatar') }}">Mon avatar</a></li>
-			<li><a href="{{ path('app_quizz') }}">Questionnaire</a></li>
-		</ul>
-	</nav>
-{% endblock %}
+	<!-- Bouton unique géré par le JS -->
+	<button id="btn-back" type="button">Retour</button>
+
+	<!-- Choix des items -->
+	<section id="items-list">
+		<h2 id="choixTheme">Choisis un thème</h2>
+
+		<button
+			type="button" data-cat="vetements">
+			<!-- <img src="./images/vetements.png" alt="Vêtements"> -->
+			<span>Vêtements</span>
+		</button>
+
+		<button
+			type="button" data-cat="livres">
+			<!-- <img src="./images/livres.png" alt="Livres"> -->
+			<span>Livres</span>
+		</button>
+
+		<button
+			type="button" data-cat="jeux">
+			<!-- <img src="./images/jeux.png" alt="Jeux-vidéo"> -->
+			<span>Jeux-vidéo</span>
+		</button>
+		<button
+			type="button" data-cat="meubles">
+			<!-- <img src="./images/meubles.png" alt="Meubles"> -->
+			<span>Meubles</span>
+		</button>
+
+		<button
+			type="button" data-cat="loisirs">
+			<!-- <img src="./images/loisirs.png" alt="Loisirs"> -->
+			<span>Loisirs</span>
+		</button>
+	</section>
+
+	<!-- Intro du QCM -->
+	<section id="intro-qcm" hidden>
+		<h2 id="intro-titre"></h2>
+		<p id="intro-texte"></p>
+
+		<button id="btn-start" type="button">Répondre aux questions</button>
+		<button id="btn-change-cat" type="button">Changer de catégorie</button>
+	</section>
+
+	<!-- Zone du quiz -->
+	<section id="quiz" hidden>
+		<h2 id="q-titre"></h2>
+		<div id="q-choix" class="zone-reponses"></div>
+	</section>
+
+	<!-- Résultat final -->
+	<section id="resultat" hidden>
+		<h2>Résultat</h2>
+		<p id="res-texte"></p>
+	</section>
+</body>{% endblock %}
