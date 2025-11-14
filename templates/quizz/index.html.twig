@@ -3,12 +3,12 @@
 {% block title %}Dois-je l'acheter ?
 {% endblock %}
 
-{% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('assets/quiz.css') }}">
+{% block styles %}
+	<link rel="stylesheet" href="{{ asset('styles/quiz.css') }}">
 {% endblock %}
 
 {% block scripts %}
-	<script src="{{ asset('assets/qcm.js') }}"></script>
+	<script src="{{ asset('/assets/qcm.js') }}" defer></script>
 {% endblock %}
 
 {% block body %}
@@ -18,7 +18,7 @@
 			class="container quiz-container">
 
 			<!-- Bouton universel de retour -->
-			<button id="btn-back" type="button" class="btn4">Retour</button>
+			<button id="btn-back" type="button" class="btn2">Retour</button>
 			<h1>Quiz : En as-tu vraiment besoin ?</h1>
 
 			<!-- 1) Choix des catégories -->
