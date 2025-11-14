@@ -393,6 +393,7 @@ function showQuestionById(questionId)
     // Boutons de réponse
     qChoixZone.innerHTML = "";
 
+
     question.choix.forEach((c) =>
     {
         const btn = document.createElement("button");
